@@ -1,1 +1,0 @@
-//# sourceMappingURL=kubewatch.js.map
