@@ -1,0 +1,1 @@
+{"version":3,"file":"pod-security-policies.route.js","sourceRoot":"","sources":["../../../../client/components/+pod-security-policies/pod-security-policies.route.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,QAAQ,EAAE,MAAM,kBAAkB,CAAC;AAE5C,MAAM,CAAC,MAAM,wBAAwB,GAAe;IAClD,IAAI,EAAE,wBAAwB;CAC/B,CAAA;AAED,MAAM,CAAC,MAAM,sBAAsB,GAAG,QAAQ,CAAC,wBAAwB,CAAC,IAAI,CAAC,CAAA"}

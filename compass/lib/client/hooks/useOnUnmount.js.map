@@ -1,0 +1,1 @@
+{"version":3,"file":"useOnUnmount.js","sourceRoot":"","sources":["../../../client/hooks/useOnUnmount.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,OAAO,CAAC;AAElC,MAAM,UAAU,YAAY,CAAC,QAAoB;IAC/C,SAAS,CAAC,GAAG,EAAE,CAAC,QAAQ,EAAE,EAAE,CAAC,CAAA;AAC/B,CAAC"}

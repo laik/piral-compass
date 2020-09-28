@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "baseUrl": "../",
+    "rootDir": "../",
+    "outDir": "../lib",
+    "jsx": "preserve",
+    "target": "es2016",
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "traceResolution": false,
+    "resolveJsonModule": true,
+    "declaration": true
+  },
+  "exclude": [
+    "node_modules",
+    "../test",
+    "**/__tests__"
+  ]
+}

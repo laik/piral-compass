@@ -1,0 +1,1 @@
+{"version":3,"file":"config.api.js","sourceRoot":"","sources":["../../../../client/api/endpoints/config.api.ts"],"names":[],"mappings":"AAAA,wBAAwB;AACxB,OAAO,EAAE,OAAO,EAAE,MAAM,UAAU,CAAC;AAEnC,MAAM,CAAC,MAAM,SAAS,GAAG;IACvB,SAAS;QACP,OAAO,OAAO,CAAC,GAAG,CAAU,SAAS,CAAC,CAAA;IACxC,CAAC;CACF,CAAC"}

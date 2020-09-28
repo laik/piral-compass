@@ -1,0 +1,36 @@
+{
+  "name": "compass-shell",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "piral"
+  ],
+  "dependencies": {
+    "piral": "^0.12.1"
+  },
+  "scripts": {
+    "start": "piral debug",
+    "build": "piral build"
+  },
+  "app": "./src/index.html",
+  "pilets": {
+    "files": [],
+    "externals": [],
+    "scripts": {},
+    "validators": {},
+    "devDependencies": {},
+    "preScaffold": "",
+    "postScaffold": "",
+    "preUpgrade": "",
+    "postUpgrade": ""
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/react-router": "latest",
+    "@types/react-router-dom": "latest",
+    "@types/node": "latest",
+    "typescript": "latest",
+    "piral-cli": "latest"
+  }
+}
