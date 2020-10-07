@@ -6,7 +6,8 @@
     "piral"
   ],
   "dependencies": {
-    "piral": "^0.12.1"
+    "compass-base": "../compass/compass-base-0.1.1.tgz",
+    "piral": "^0.12.2"
   },
   "scripts": {
     "start": "piral debug",
@@ -25,12 +26,12 @@
     "postUpgrade": ""
   },
   "devDependencies": {
+    "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@types/react-router": "latest",
     "@types/react-router-dom": "latest",
-    "@types/node": "latest",
-    "typescript": "latest",
-    "piral-cli": "latest"
+    "piral-cli": "latest",
+    "typescript": "^3.9.7"
   }
 }

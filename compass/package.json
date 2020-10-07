@@ -1,6 +1,8 @@
 {
-  "name": "piral-compass-base",
+  "name": "compass-base",
   "version": "0.1.1",
+  "main": "./main.js",
+  "typings": "./main.d.ts",
   "scripts": {
     "dev": "set NODE_ENV=development&&webpack-dev-server --open",
     "build": "set NODE_ENV=production&&webpack",
@@ -12,12 +14,12 @@
     "lingui-extract": "lingui extract --clean",
     "lingui-compile": "lingui compile"
   },
-  "pilets": {
-    "files": [],
-    "externals": [],
-    "devDependencies": {},
-    "scripts": {}
-  },
+  "files": [
+    "lib",
+    "client",
+    "server",
+    "main.js"
+  ],
   "app": "./client/components/index.tsx",
   "dependencies": {
     "@ant-design/icons": "^4.1.0",

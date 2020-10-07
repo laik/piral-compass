@@ -12,9 +12,7 @@
     "importHelpers": true
   },
   "include": [
-    "./src"
-  ],
-  "exclude": [
-    "node_modules"
+    "./src",
+    "./node_modules"
   ]
 }

@@ -24,12 +24,13 @@ export default () => {
     entry: {
       app: path.resolve(srcDir, "components/app.tsx"),
     },
+    target: 'node',
     output: {
       //path: buildDir,
       path: path.resolve(__dirname, './dist'),
       publicPath: '/',
       filename: '[name].js',
-      chunkFilename: 'chunks/[name].js',
+      chunkFilename: '[name].js',
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.json']
@@ -130,7 +131,6 @@ export default () => {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           use: [
-
             "babel-loader",
             {
               loader: 'ts-loader',
@@ -146,7 +146,7 @@ export default () => {
             {
               loader: 'file-loader',
               options:{
-                name:'assets/[name]-[hash:6].[ext]',
+                name:'favicon/[name].[ext]',
                 esModule:false
               }
             },
@@ -159,7 +159,7 @@ export default () => {
             {
               loader: 'file-loader',
               options:{
-                name:'assets/fonts/[name].[ext]',
+                name:'fonts/[name].[ext]',
                 esModule:false
               }
             },
