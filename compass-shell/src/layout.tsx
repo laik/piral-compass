@@ -35,25 +35,27 @@ export const layout: Partial<ComponentsState> = {
     </div>
   ),
   DashboardTile: ({columns, rows, children}) => <div className={`tile cols-${columns} rows-${rows}`}>{children}</div>,
-  Layout: ({ children }) => (
-    <div className={cssNames("MainLayout", themeStore.activeTheme.type)}>
-      <header className={cssNames("flex gaps align-center")}>
-        <div className="box grow flex align-center" />
-      </header>
+  Layout: ({ children }) => {
+    return (
+      <div className={cssNames("MainLayout", themeStore.activeTheme.type)}>
+        <header className={cssNames("flex gaps align-center")}>
+          <div className="box grow flex align-center" />
+        </header>
 
-      <aside className={cssNames("flex column", { pinned: true, accessible: true })}>
-        <Sidebar
-          className="box grow"
-          isPinned={true}
-          toggle={() => {}}
-        />
-      </aside>
+        <aside className={cssNames("flex column", { pinned: true, accessible: true })}>
+          <Sidebar
+            className="box grow"
+            isPinned={true}
+            toggle={() => {}}
+          />
+        </aside>
 
-      <main>
-        {children}
-      </main>
-    </div>
-  ),
+        <main>
+          {children}
+        </main>
+      </div>
+    )
+  },
   MenuContainer: ({children}) => {
     const [collapsed, setCollapsed] = React.useState(true);
     return (

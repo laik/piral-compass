@@ -1,3 +1,4 @@
+
 function removeModuleRules(compassConfig, rule) {
 
   for (let i=0; i < compassConfig.module.rules.length; i++) {
@@ -13,6 +14,8 @@ module.exports = function(compassConfig) {
 
   const path = require('path');
   const webpack = require('webpack');
+  const WebpackBar = require('webpackbar');
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
 
   const srcDir = path.resolve(process.cwd(), 'node_modules', 'compass-base', 'client');
   const sassCommonVarsFile = path.resolve(srcDir, 'components', 'vars.scss');
@@ -114,10 +117,14 @@ module.exports = function(compassConfig) {
       process: {
         env: JSON.stringify(clientVars)
       },
-    })
+    }),
+    new WebpackBar(),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+    }),
   )
 
-  console.log(compassConfig.module.rules);
-  console.log(JSON.stringify(compassConfig.module.rules, null, 2));
+  // console.log(compassConfig);
+  // console.log(JSON.stringify(compassConfig, null, 2));
   return compassConfig;
 }
