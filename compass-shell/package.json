@@ -19,7 +19,9 @@
     "externals": [],
     "scripts": {},
     "validators": {},
-    "devDependencies": {},
+    "devDependencies": {
+      "compass-base": "../compass/compass-base-0.1.1.tgz"
+    },
     "preScaffold": "",
     "postScaffold": "",
     "preUpgrade": "",
