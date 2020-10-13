@@ -13,14 +13,13 @@
     "lib": ["dom", "es2018"],
     "moduleResolution": "node",
     "module": "esnext",
-    "jsx": "react",
+    "jsx": "preserve",
     "importHelpers": true,
-    "allowSyntheticDefaultImports":true
+    "allowSyntheticDefaultImports":true,
+    "allowJs": true
   },
   "include": [
-    "./src"
-  ],
-  "exclude": [
+    "./src",
     "node_modules"
   ]
 }

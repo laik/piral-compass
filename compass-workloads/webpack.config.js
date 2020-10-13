@@ -113,11 +113,9 @@ module.exports = function(compassConfig) {
   })
 
   compassConfig.module.rules.push({
-    test: /\.js$/,
+    test: /\.jsx?$/,
     use:[
-      {
-        loader: "babel-loader",
-      }
+      "babel-loader"
     ]
   })
 
