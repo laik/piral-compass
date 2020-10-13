@@ -13,10 +13,9 @@
     "lib": ["dom", "es2018"],
     "moduleResolution": "node",
     "module": "esnext",
-    "jsx": "preserve",
-    "allowJs": true,
+    "jsx": "react",
     "importHelpers": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports":true
   },
   "include": [
     "./src"

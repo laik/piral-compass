@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a pilets=("")
+declare -a pilets=("compass-workloads,")
 
 for pilet in "${pilets[@]}";
 do

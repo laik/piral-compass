@@ -13,4 +13,9 @@ renderInstance({
   requestPilets() {
     return new Promise((resolve) => setTimeout(() => resolve([]), 1000));
   }
+  // requestPilets() {
+  //   return fetch('http://localhost:9000/api/v1/pilet')
+  //   .then(res => res.json())
+  //   .then(res => res.items);
+  // },
 });

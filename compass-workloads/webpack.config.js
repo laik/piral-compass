@@ -15,6 +15,7 @@ module.exports = function(compassConfig) {
   const path = require('path');
   const webpack = require('webpack');
   const WebpackBar = require('webpackbar');
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
 
   const srcDir = path.resolve(process.cwd(), 'node_modules', 'compass-base', 'client');
   const sassCommonVarsFile = path.resolve(srcDir, 'components', 'vars.scss');
@@ -111,11 +112,6 @@ module.exports = function(compassConfig) {
     ]
   })
 
-  compassConfig.module.rules.push({
-    test: /\.js$/,
-    loader: 'babel-loader',
-  })
-
   compassConfig.plugins.push(
     new webpack.DefinePlugin({
       process: {
@@ -125,7 +121,7 @@ module.exports = function(compassConfig) {
     new WebpackBar(),
   )
 
-  console.log(compassConfig.module.rules);
+  console.log(compassConfig);
   console.log(JSON.stringify(compassConfig, null, 2));
   return compassConfig;
 }

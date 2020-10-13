@@ -112,18 +112,6 @@ module.exports = function(compassConfig) {
     ]
   })
 
-  compassConfig.module.rules.push({
-    test: /\.jsx?$/,
-    use: [
-      {
-        loader: "babel",
-        options: {
-          presets: ['react', 'es2015'],
-        }
-      }
-    ]
-  })
-
   compassConfig.plugins.push(
     new webpack.DefinePlugin({
       process: {
@@ -136,7 +124,7 @@ module.exports = function(compassConfig) {
     }),
   )
 
-  // console.log(compassConfig);
-  // console.log(JSON.stringify(compassConfig, null, 2));
+  console.log(compassConfig);
+  console.log(JSON.stringify(compassConfig, null, 2));
   return compassConfig;
 }

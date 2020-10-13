@@ -15,7 +15,9 @@
   },
   "app": "./src/index.html",
   "pilets": {
-    "files": [],
+    "files": [
+      "webpack.config.js"
+    ],
     "externals": [],
     "scripts": {},
     "validators": {},
