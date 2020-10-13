@@ -112,6 +112,15 @@ module.exports = function(compassConfig) {
     ]
   })
 
+  compassConfig.module.rules.push({
+    test: /\.js$/,
+    use:[
+      {
+        loader: "babel-loader",
+      }
+    ]
+  })
+
   compassConfig.plugins.push(
     new webpack.DefinePlugin({
       process: {

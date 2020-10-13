@@ -3,6 +3,7 @@ import { PiletApi } from 'compass-shell';
 import {observer} from "mobx-react";
 import {observable} from "mobx";
 import {PageComponentProps} from "compass-shell";
+import {Jobs} from "./+workloads-jobs";
 
 @observer class Timer extends React.Component<PageComponentProps, any> {
 
@@ -23,5 +24,5 @@ export function setup(app: PiletApi) {
   app.registerMenu(() =>
     <a href="https://docs.piral.io" target="_blank">Documentation</a>
   );
-  app.registerPage("/hello", Timer);
+  app.registerPage("/hello", Jobs);
 }
