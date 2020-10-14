@@ -11,7 +11,7 @@ import { Props as ReactSelectProps } from "react-select/base"
 import Creatable, { CreatableProps } from "react-select/creatable"
 import { StylesConfig } from "react-select/src/styles"
 import { ActionMeta } from "react-select/src/types"
-import { themeStore } from "../../theme.store";
+// import { themeStore } from "../../theme.store";
 
 export { ReactSelectComponents }
 

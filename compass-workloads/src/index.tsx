@@ -24,5 +24,5 @@ export function setup(app: PiletApi) {
   app.registerMenu(() =>
     <a href="https://docs.piral.io" target="_blank">Documentation</a>
   );
-  app.registerPage("/hello", Jobs);
+  app.registerPage("/events", Jobs);
 }

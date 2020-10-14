@@ -2,16 +2,18 @@ import "./jobs.scss";
 
 import React from "react";
 import { observer } from "mobx-react";
+import { RouteComponentProps } from "react-router";
+import { podsStore } from "../+workloads-pods/pods.store";
 import { jobStore } from "./job.store";
 import { eventStore } from "compass-base/client/components/+events/event.store";
 import { Job, jobApi } from "compass-base/client/api/endpoints/job.api";
 import { KubeObjectMenu, KubeObjectMenuProps } from "compass-base/client/components/kube-object/kube-object-menu";
 import { KubeObjectListLayout } from "compass-base/client/components/kube-object";
+import { IJobsRouteParams } from "../+workloads";
 import { KubeEventIcon } from "compass-base/client/components/+events/kube-event-icon";
 import kebabCase from "lodash/kebabCase";
 import { apiManager } from "compass-base/client/api/api-manager";
-
-import {PageComponentProps} from "compass-shell";
+import { PageComponentProps } from "piral-core";
 
 enum sortBy {
   name = "name",
@@ -20,16 +22,16 @@ enum sortBy {
   age = "age",
 }
 
-interface Props extends PageComponentProps {
+interface Props extends RouteComponentProps<IJobsRouteParams> {
 }
 
 @observer
-export class Jobs extends React.Component<Props> {
+export class Jobs extends React.Component<PageComponentProps> {
   render() {
     return (
       <KubeObjectListLayout
         className="Jobs" store={jobStore}
-        dependentStores={[eventStore]}
+        dependentStores={[podsStore, eventStore]}
         sortingCallbacks={{
           [sortBy.name]: (job: Job) => job.getName(),
           [sortBy.namespace]: (job: Job) => job.getNs(),

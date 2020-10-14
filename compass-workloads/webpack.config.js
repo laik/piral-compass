@@ -115,7 +115,16 @@ module.exports = function(compassConfig) {
   compassConfig.module.rules.push({
     test: /\.jsx?$/,
     use:[
-      "babel-loader"
+      {
+        loader: "babel-loader",
+        options: {
+          presets: [
+            "@babel/preset-env",
+            "@babel/preset-react",
+            "@babel/preset-flow"
+          ]
+        }
+      }
     ]
   })
 
@@ -128,7 +137,7 @@ module.exports = function(compassConfig) {
     new WebpackBar(),
   )
 
-  console.log(compassConfig);
-  console.log(JSON.stringify(compassConfig, null, 2));
+  console.log(compassConfig.module.rules);
+  console.log(JSON.stringify(compassConfig.module.rules, null, 2));
   return compassConfig;
 }

@@ -5,7 +5,12 @@
   "keywords": [
     "pilet"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "@types/react-select": "^3.0.22",
+    "babel-preset-flow": "^6.23.0",
+    "compass-base": "../compass/compass-base-0.1.1.tgz",
+    "react-select": "^3.1.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.11.6",
     "@babel/core": "^7.11.6",
@@ -17,7 +22,6 @@
     "@types/react-dom": "latest",
     "@types/react-router": "latest",
     "@types/react-router-dom": "latest",
-    "compass-base": "../compass/compass-base-0.1.1.tgz",
     "compass-shell": "file:../compass-shell/dist/emulator/compass-shell-1.0.0.tgz",
     "history": "4.10.1",
     "path-to-regexp": "3.2.0",
