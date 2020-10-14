@@ -3,12 +3,11 @@ import "./injector-details.scss";
 import React from "react";
 import { disposeOnUnmount, observer } from "mobx-react";
 import { reaction } from "mobx";
-import { Trans } from "@lingui/macro";
-import { DrawerItem } from "../drawer";
+import { DrawerItem } from "compass-base/client/drawer";
 import { injectorStore } from "./injectors.store";
-import { KubeObjectDetailsProps } from "../kube-object";
-import { injectorApi, Injector } from "../../api/endpoints";
-import { apiManager } from "../../api/api-manager";
+import { KubeObjectDetailsProps } from "compass-base/client/kube-object";
+import { injectorApi, Injector } from "compass-base/client/api/endpoints";
+import { apiManager } from "compass-base/client/api/api-manager";
 // import { stoneStore} from "../+workloads-stones"
 
 interface Props extends KubeObjectDetailsProps<Injector> {
@@ -34,13 +33,13 @@ export class InjectorDetails extends React.Component<Props> {
     const ownerRef = injector.getOwnerRefs()[0];
     return (
       <div className="InjectorDetails">
-        <DrawerItem name={<Trans>Owner Type</Trans>}>
+        <DrawerItem name={`Owner Type`}>
           {
             <>{ownerRef.kind}</>
           }
         </DrawerItem>
 
-        <DrawerItem name={<Trans>Owner</Trans>}>
+        <DrawerItem name={`Owner`}>
           {
             <>{ownerRef.namespace} / {ownerRef.name}</>
 

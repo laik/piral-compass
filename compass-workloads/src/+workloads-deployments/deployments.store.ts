@@ -1,9 +1,9 @@
 import { observable } from "mobx";
-import { Deployment, deploymentApi, IPodMetrics, podsApi, PodStatus } from "../../api/endpoints";
-import { KubeObjectStore } from "../../kube-object.store";
-import { autobind } from "../../utils";
+import { Deployment, deploymentApi, IPodMetrics, podsApi, PodStatus } from "compass-base/client/api/endpoints";
+import { KubeObjectStore } from "compass-base/client/kube-object.store";
+import { autobind } from "compass-base/client/utils";
 import { podsStore } from "../+workloads-pods/pods.store";
-import { apiManager } from "../../api/api-manager";
+import { apiManager } from "compass-base/client/api/api-manager";
 
 @autobind()
 export class DeploymentStore extends KubeObjectStore<Deployment> {

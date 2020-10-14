@@ -3,14 +3,13 @@ import "./deployment-scale-dialog.scss";
 import React, { Component } from "react";
 import { computed, observable } from "mobx";
 import { observer } from "mobx-react";
-import { Trans } from "@lingui/macro";
-import { Dialog, DialogProps } from "../dialog";
-import { Wizard, WizardStep } from "../wizard";
-import { Deployment, deploymentApi } from "../../api/endpoints";
-import { Icon } from "../icon";
-import { Slider } from "../slider";
-import { Notifications } from "../notifications";
-import { cssNames } from "../../utils";
+import { Dialog, DialogProps } from "compass-base/client/components/dialog";
+import { Wizard, WizardStep } from "compass-base/client/components/wizard";
+import { Deployment, deploymentApi } from "compass-base/client/api/endpoints";
+import { Icon } from "compass-base/client/components/icon";
+import { Slider } from "compass-base/client/components/slider";
+import { Notifications } from "compass-base/client/components/notifications";
+import { cssNames } from "compass-base/client/utils";
 
 interface Props extends Partial<DialogProps> {
 }
@@ -89,11 +88,11 @@ export class DeploymentScaleDialog extends Component<Props> {
     return (
       <>
         <div className="current-scale">
-          <Trans>Current replica scale: {currentReplicas}</Trans>
+          `Current replica scale: {currentReplicas}`
         </div>
         <div className="flex gaps align-center">
           <div className="desired-scale">
-            <Trans>Desired number of replicas</Trans>: {desiredReplicas}
+            `Desired number of replicas`: {desiredReplicas}
           </div>
           <div className="slider-container">
             <Slider value={desiredReplicas} max={scaleMax} onChange={onChange as any}/>
@@ -102,7 +101,7 @@ export class DeploymentScaleDialog extends Component<Props> {
         {warning &&
         <div className="warning">
           <Icon material="warning"/>
-          <Trans>High number of replicas may cause cluster performance issues</Trans>
+          `High number of replicas may cause cluster performance issues`
         </div>
         }
       </>
@@ -114,7 +113,7 @@ export class DeploymentScaleDialog extends Component<Props> {
     const deploymentName = this.deployment ? this.deployment.getName() : "";
     const header = (
       <h5>
-        <Trans>Scale Deployment <span>{deploymentName}</span></Trans>
+        `Scale Deployment <span>{deploymentName}</span>`
       </h5>
     );
     return (
@@ -130,7 +129,7 @@ export class DeploymentScaleDialog extends Component<Props> {
           <WizardStep
             contentClass="flex gaps column"
             next={this.scale}
-            nextLabel={<Trans>Scale</Trans>}
+            nextLabel={`Scale`}
             disabledNext={!this.ready}
           >
             {this.renderContents()}

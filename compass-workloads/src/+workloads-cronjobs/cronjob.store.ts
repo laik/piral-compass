@@ -1,8 +1,8 @@
-import { KubeObjectStore } from "../../kube-object.store";
-import { autobind } from "../../utils";
-import { CronJob, cronJobApi } from "../../api/endpoints/cron-job.api";
+import { KubeObjectStore } from "compass-base/client/kube-object.store";
+import { autobind } from "compass-base/client/utils";
+import { CronJob, cronJobApi } from "compass-base/client/api/endpoints/cron-job.api";
 import { jobStore } from "../+workloads-jobs/job.store";
-import { apiManager } from "../../api/api-manager";
+import { apiManager } from "compass-base/client/api/api-manager";
 
 @autobind()
 export class CronJobStore extends KubeObjectStore<CronJob> {

@@ -1,9 +1,9 @@
 import { observable } from "mobx";
-import { autobind } from "../../utils";
-import { KubeObjectStore } from "../../kube-object.store";
-import { injectorApi } from "../../api/endpoints";
-import { apiManager } from "../../api/api-manager";
-import { Injector } from "../../api/endpoints";
+import { autobind } from "compass-base/client/utils";
+import { KubeObjectStore } from "compass-base/client/kube-object.store";
+import { injectorApi } from "compass-base/client/api/endpoints";
+import { apiManager } from "compass-base/client/api/api-manager";
+import { Injector } from "compass-base/client/api/endpoints";
 
 @autobind()
 export class InjectorsStore extends KubeObjectStore<Injector> {

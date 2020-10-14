@@ -22,11 +22,11 @@ enum sortBy {
   age = "age",
 }
 
-interface Props extends RouteComponentProps<IJobsRouteParams> {
+interface Props extends PageComponentProps<IJobsRouteParams> {
 }
 
 @observer
-export class Jobs extends React.Component<PageComponentProps> {
+export class Jobs extends React.Component<Props, any> {
   render() {
     return (
       <KubeObjectListLayout

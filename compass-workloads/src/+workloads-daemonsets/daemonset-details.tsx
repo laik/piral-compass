@@ -2,23 +2,22 @@ import "./daemonset-details.scss";
 
 import React from "react";
 import { disposeOnUnmount, observer } from "mobx-react";
-import { Trans } from "@lingui/macro";
-import { DrawerItem } from "../drawer";
-import { Badge } from "../badge";
+import { DrawerItem } from "compass-base/client/components/drawer";
+import { Badge } from "compass-base/client/components/badge";
 import { PodDetailsStatuses } from "../+workloads-pods/pod-details-statuses";
 import { PodDetailsTolerations } from "../+workloads-pods/pod-details-tolerations";
 import { PodDetailsAffinities } from "../+workloads-pods/pod-details-affinities";
-import { KubeEventDetails } from "../+events/kube-event-details";
+import { KubeEventDetails } from "compass-base/client/components/+events/kube-event-details";
 import { daemonSetStore } from "./daemonsets.store";
 import { podsStore } from "../+workloads-pods/pods.store";
-import { KubeObjectDetailsProps } from "../kube-object";
-import { DaemonSet, daemonSetApi } from "../../api/endpoints";
-import { ResourceMetrics, ResourceMetricsText } from "../resource-metrics";
+import { KubeObjectDetailsProps } from "compass-base/client/components/kube-object";
+import { DaemonSet, daemonSetApi } from "compass-base/client/api/endpoints";
+import { ResourceMetrics, ResourceMetricsText } from "compass-base/client/components/resource-metrics";
 import { PodCharts, podMetricTabs } from "../+workloads-pods/pod-charts";
 import { reaction } from "mobx";
 import { PodDetailsList } from "../+workloads-pods/pod-details-list";
-import { apiManager } from "../../api/api-manager";
-import { KubeObjectMeta } from "../kube-object/kube-object-meta";
+import { apiManager } from "compass-base/client/api/api-manager";
+import { KubeObjectMeta } from "compass-base/client/components/kube-object/kube-object-meta";
 
 interface Props extends KubeObjectDetailsProps<DaemonSet> {
 }
@@ -61,32 +60,32 @@ export class DaemonSetDetails extends React.Component<Props> {
         )}
         <KubeObjectMeta object={daemonSet}/>
         {selectors.length > 0 &&
-        <DrawerItem name={<Trans>Selector</Trans>} labelsOnly>
+        <DrawerItem name={`Selector`} labelsOnly>
           {
             selectors.map(label => <Badge key={label} label={label}/>)
           }
         </DrawerItem>
         }
         {nodeSelector.length > 0 &&
-        <DrawerItem name={<Trans>Node Selector</Trans>} labelsOnly>
+        <DrawerItem name={`Node Selector`} labelsOnly>
           {
             nodeSelector.map(label => (<Badge key={label} label={label}/>))
           }
         </DrawerItem>
         }
         {images.length > 0 &&
-        <DrawerItem name={<Trans>Images</Trans>}>
+        <DrawerItem name={`Images`}>
           {
             images.map(image => <p key={image}>{image}</p>)
           }
         </DrawerItem>
         }
-        <DrawerItem name={<Trans>Strategy Type</Trans>}>
+        <DrawerItem name={`Strategy Type`}>
           {spec.updateStrategy.type}
         </DrawerItem>
         <PodDetailsTolerations workload={daemonSet}/>
         <PodDetailsAffinities workload={daemonSet}/>
-        <DrawerItem name={<Trans>Pod Status</Trans>} className="pod-status">
+        <DrawerItem name={`Pod Status`} className="pod-status">
           <PodDetailsStatuses pods={childPods}/>
         </DrawerItem>
         <ResourceMetricsText metrics={metrics}/>

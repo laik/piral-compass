@@ -3,17 +3,16 @@ import "./waters.store.ts";
 import React from "react";
 import { observer } from "mobx-react";
 import { RouteComponentProps } from "react-router";
-import { Trans } from "@lingui/macro";
-import { Water, waterApi } from "../../api/endpoints";
+import { Water, waterApi } from "compass-base/client/api/endpoints";
 import { podsStore } from "../+workloads-pods/pods.store";
 import { waterStore } from "./waters.store";
-import { nodesStore } from "../+nodes/nodes.store";
-import { eventStore } from "../+events/event.store";
-import { KubeObjectMenu, KubeObjectMenuProps } from "../kube-object/kube-object-menu";
-import { KubeObjectListLayout } from "../kube-object";
+import { nodesStore } from "compass-base/client/components/+nodes/nodes.store";
+import { eventStore } from "compass-base/client/components/+events/event.store";
+import { KubeObjectMenu, KubeObjectMenuProps } from "compass-base/client/components/kube-object/kube-object-menu";
+import { KubeObjectListLayout } from "compass-base/client/components/kube-object";
 import { IStatefulSetsRouteParams } from "../+workloads";
-import { KubeEventIcon } from "../+events/kube-event-icon";
-import { apiManager } from "../../api/api-manager";
+import { KubeEventIcon } from "compass-base/client/components/+events/kube-event-icon";
+import { apiManager } from "compass-base/client/api/api-manager";
 import { deploymentStore } from "../+workloads-deployments/deployments.store";
 
 enum sortBy {
@@ -53,14 +52,14 @@ export class Waters extends React.Component<Props> {
         searchFilters={[
           (water: Water) => water.getSearchFields(),
         ]}
-        renderHeaderTitle={<Trans>Waters</Trans>}
+        renderHeaderTitle={`Waters`}
         renderTableHeader={[
-          { title: <Trans>Name</Trans>, className: "name", sortBy: sortBy.name },
-          { title: <Trans>Namespace</Trans>, className: "namespace", sortBy: sortBy.namespace },
-          { title: <Trans>Pods</Trans>, className: "pods", sortBy: sortBy.pods },
+          { title: `Name`, className: "name", sortBy: sortBy.name },
+          { title: `Namespace`, className: "namespace", sortBy: sortBy.namespace },
+          { title: `Pods`, className: "pods", sortBy: sortBy.pods },
           { className: "warning" },
-          // { title: <Trans>Statefulsets</Trans>, className: "statefulsets", sortBy: sortBy.statefulsets },
-          { title: <Trans>Age</Trans>, className: "age", sortBy: sortBy.age },
+          // { title: `Statefulsets`, className: "statefulsets", sortBy: sortBy.statefulsets },
+          { title: `Age`, className: "age", sortBy: sortBy.age },
         ]}
         renderTableContents={((water: Water) => [
           water.getName(),

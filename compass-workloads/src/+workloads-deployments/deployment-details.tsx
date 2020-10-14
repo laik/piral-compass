@@ -3,26 +3,24 @@ import "./deployment-details.scss";
 import React from "react";
 import kebabCase from "lodash/kebabCase";
 import { disposeOnUnmount, observer } from "mobx-react";
-import { t, Trans } from "@lingui/macro";
-import { DrawerItem } from "../drawer";
-import { Badge } from "../badge";
-import { Deployment, deploymentApi } from "../../api/endpoints";
-import { cssNames } from "../../utils";
+import { DrawerItem } from "compass-base/client/components/drawer";
+import { Badge } from "compass-base/client/components/badge";
+import { Deployment, deploymentApi } from "compass-base/client/api/endpoints";
+import { cssNames } from "compass-base/client/utils";
 import { PodDetailsTolerations } from "../+workloads-pods/pod-details-tolerations";
 import { PodDetailsAffinities } from "../+workloads-pods/pod-details-affinities";
-import { KubeEventDetails } from "../+events/kube-event-details";
+import { KubeEventDetails } from "compass-base/client/components/+events/kube-event-details";
 import { replicaSetStore } from "../+workloads-replicasets/replicasets.store";
 import { podsStore } from "../+workloads-pods/pods.store";
-import { KubeObjectDetailsProps } from "../kube-object";
-import { _i18n } from "../../i18n";
-import { ResourceMetrics, ResourceMetricsText } from "../resource-metrics";
+import { KubeObjectDetailsProps } from "compass-base/client/components/kube-object";
+import { ResourceMetrics, ResourceMetricsText } from "compass-base/client/components/resource-metrics";
 import { deploymentStore } from "./deployments.store";
 import { PodCharts, podMetricTabs } from "../+workloads-pods/pod-charts";
 import { reaction } from "mobx";
 import { PodDetailsList } from "../+workloads-pods/pod-details-list";
 import { ReplicaSets } from "../+workloads-replicasets";
-import { apiManager } from "../../api/api-manager";
-import { KubeObjectMeta } from "../kube-object/kube-object-meta";
+import { apiManager } from "compass-base/client/api/api-manager";
+import { KubeObjectMeta } from "compass-base/client/components/kube-object/kube-object-meta";
 
 interface Props extends KubeObjectDetailsProps<Deployment> {
 }
@@ -38,9 +36,9 @@ export class DeploymentDetails extends React.Component<Props> {
     if (!podsStore.isLoaded) {
       podsStore.loadAll();
     }
-    if (!replicaSetStore.isLoaded) {
-      replicaSetStore.loadAll();
-    }
+    // if (!replicaSetStore.isLoaded) {
+    //   replicaSetStore.loadAll();
+    // }
   }
 
   componentWillUnmount() {
@@ -67,20 +65,20 @@ export class DeploymentDetails extends React.Component<Props> {
           </ResourceMetrics>
         )}
         <KubeObjectMeta object={deployment}/>
-        <DrawerItem name={<Trans>Replicas</Trans>}>
-          {_i18n._(t`${spec.replicas} desired, ${status.updatedReplicas || 0} updated`)},{" "}
-          {_i18n._(t`${status.replicas || 0} total, ${status.availableReplicas || 0} available`)},{" "}
-          {_i18n._(t`${status.unavailableReplicas || 0} unavailable`)}
+        <DrawerItem name={`Replicas`}>
+          {`${spec.replicas} desired, ${status.updatedReplicas || 0} updated`},{" "}
+          {`${status.replicas || 0} total, ${status.availableReplicas || 0} available`},{" "}
+          {`${status.unavailableReplicas || 0} unavailable`}
         </DrawerItem>
         {selectors.length > 0 &&
-        <DrawerItem name={<Trans>Selector</Trans>} labelsOnly>
+        <DrawerItem name={`Selector`} labelsOnly>
           {
             selectors.map(label => <Badge key={label} label={label}/>)
           }
         </DrawerItem>
         }
         {nodeSelector.length > 0 &&
-        <DrawerItem name={<Trans>Node Selector</Trans>}>
+        <DrawerItem name={`Node Selector`}>
           {
             nodeSelector.map(label => (
               <Badge key={label} label={label}/>
@@ -88,10 +86,10 @@ export class DeploymentDetails extends React.Component<Props> {
           }
         </DrawerItem>
         }
-        <DrawerItem name={<Trans>Strategy Type</Trans>}>
+        <DrawerItem name={`Strategy Type`}>
           {spec.strategy.type}
         </DrawerItem>
-        <DrawerItem name={<Trans>Conditions</Trans>} className="conditions" labelsOnly>
+        <DrawerItem name={`Conditions`} className="conditions" labelsOnly>
           {
             deployment.getConditions().map(condition => {
               const { type, message, lastTransitionTime, status } = condition
@@ -103,7 +101,7 @@ export class DeploymentDetails extends React.Component<Props> {
                   tooltip={(
                     <>
                       <p>{message}</p>
-                      <p><Trans>Last transition time: {lastTransitionTime}</Trans></p>
+                      <p>`Last transition time: {lastTransitionTime}`</p>
                     </>
                   )}
                 />

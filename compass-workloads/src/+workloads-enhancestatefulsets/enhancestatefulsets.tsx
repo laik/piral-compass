@@ -3,17 +3,16 @@ import "./enhancestatefulsets.scss";
 import React from "react";
 import { observer } from "mobx-react";
 import { RouteComponentProps } from "react-router";
-import { Trans } from "@lingui/macro";
-import { EnhanceStatefulSet, enhanceStatefulSetApi } from "../../api/endpoints";
+import { EnhanceStatefulSet, enhanceStatefulSetApi } from "compass-base/client/api/endpoints";
 import { podsStore } from "../+workloads-pods/pods.store";
 import { enhanceStatefulSetStore } from "./enhancestatefulset.store";
-import { nodesStore } from "../+nodes/nodes.store";
-import { eventStore } from "../+events/event.store";
-import { KubeObjectMenu, KubeObjectMenuProps } from "../kube-object/kube-object-menu";
-import { KubeObjectListLayout } from "../kube-object";
+import { nodesStore } from "compass-base/client/components/+nodes/nodes.store";
+import { eventStore } from "compass-base/client/components/+events/event.store";
+import { KubeObjectMenu, KubeObjectMenuProps } from "compass-base/client/components/kube-object/kube-object-menu";
+import { KubeObjectListLayout } from "compass-base/client/components/kube-object";
 import { IEnhanceStatefulSetsRouteParams } from "../+workloads";
-import { KubeEventIcon } from "../+events/kube-event-icon";
-import { apiManager } from "../../api/api-manager";
+import { KubeEventIcon } from "compass-base/client/components/+events/kube-event-icon";
+import { apiManager } from "compass-base/client/api/api-manager";
 
 enum sortBy {
   name = "name",
@@ -45,13 +44,13 @@ export class EnhanceStatefulSets extends React.Component<Props> {
         searchFilters={[
           (statefulSet: EnhanceStatefulSet) => statefulSet.getSearchFields(),
         ]}
-        renderHeaderTitle={<Trans>Stateful Sets</Trans>}
+        renderHeaderTitle={`Stateful Sets`}
         renderTableHeader={[
-          { title: <Trans>Name</Trans>, className: "name", sortBy: sortBy.name },
-          { title: <Trans>Namespace</Trans>, className: "namespace", sortBy: sortBy.namespace },
-          { title: <Trans>Pods</Trans>, className: "pods", sortBy: sortBy.pods },
+          { title: `Name`, className: "name", sortBy: sortBy.name },
+          { title: `Namespace`, className: "namespace", sortBy: sortBy.namespace },
+          { title: `Pods`, className: "pods", sortBy: sortBy.pods },
           { className: "warning" },
-          { title: <Trans>Age</Trans>, className: "age", sortBy: sortBy.age },
+          { title: `Age`, className: "age", sortBy: sortBy.age },
         ]}
         renderTableContents={(statefulSet: EnhanceStatefulSet) => [
           statefulSet.getName(),

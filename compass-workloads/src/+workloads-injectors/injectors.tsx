@@ -3,12 +3,11 @@ import "./injectors.store.ts";
 import React from "react";
 import { observer } from "mobx-react";
 import { RouteComponentProps } from "react-router";
-import { Trans } from "@lingui/macro";
-import { Injector, injectorApi } from "../../api/endpoints";
-import { KubeObjectMenu, KubeObjectMenuProps } from "../kube-object/kube-object-menu";
-import { KubeObjectListLayout } from "../kube-object";
+import { Injector, injectorApi } from "compass-base/client/api/endpoints";
+import { KubeObjectMenu, KubeObjectMenuProps } from "compass-base/client/kube-object/kube-object-menu";
+import { KubeObjectListLayout } from "compass-base/client/kube-object";
 import { InjectorsRouteParams } from "../+workloads";
-import { apiManager } from "../../api/api-manager";
+import { apiManager } from "compass-base/client/api/api-manager";
 import { injectorStore } from "./injectors.store";
 
 enum sortBy {
@@ -70,12 +69,12 @@ export class Injectors extends React.Component<Props> {
         renderHeaderTitle={< Trans > Injectors</Trans >}
         renderTableHeader={
           [
-            { title: <Trans>Name</Trans>, className: "name", sortBy: sortBy.name },
-            { title: <Trans>Namespace</Trans>, className: "namespace", sortBy: sortBy.namespace },
-            { title: <Trans>Owner</Trans>, className: "owner", sortBy: sortBy.owner },
-            { title: <Trans>PreContainers</Trans>, className: "preconstainers", sortBy: sortBy.precontainers },
-            { title: <Trans>PostContainers</Trans>, className: "postcontainers", sortBy: sortBy.postcontainers },
-            { title: <Trans>Age</Trans>, className: "age", sortBy: sortBy.age },
+            { title: `Name`, className: "name", sortBy: sortBy.name },
+            { title: `Namespace`, className: "namespace", sortBy: sortBy.namespace },
+            { title: `Owner`, className: "owner", sortBy: sortBy.owner },
+            { title: `PreContainers`, className: "preconstainers", sortBy: sortBy.precontainers },
+            { title: `PostContainers`, className: "postcontainers", sortBy: sortBy.postcontainers },
+            { title: `Age`, className: "age", sortBy: sortBy.age },
           ]}
 
         renderTableContents={(injector: Injector) => [

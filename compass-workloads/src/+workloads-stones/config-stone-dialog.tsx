@@ -2,18 +2,16 @@ import "./config-stone-dialog.scss";
 
 import React from "react";
 import { observer } from "mobx-react";
-import { Dialog, DialogProps } from "../dialog";
+import { Dialog, DialogProps } from "compass-base/client/components/dialog";
 import { observable } from "mobx";
-import { Stone } from "../../api/endpoints";
-import { Wizard, WizardStep } from "../wizard";
-import { t, Trans } from "@lingui/macro";
-import { SubTitle } from "../layout/sub-title";
-import { _i18n } from "../../i18n";
-import { Notifications } from "../notifications";
-import { Select } from "../select";
+import { Stone } from "compass-base/client/api/endpoints";
+import { Wizard, WizardStep } from "compass-base/client/components/wizard";
+import { SubTitle } from "compass-base/client/components/layout/sub-title";
+import { Notifications } from "compass-base/client/components/notifications";
+import { Select } from "compass-base/client/components/select";
 import { stoneStore } from "./stones.store";
-import { Input } from "../input";
-import { isNumber } from "../input/input.validators";
+import { Input } from "compass-base/client/components/input";
+import { isNumber } from "compass-base/client/components/input/input.validators";
 
 interface Props extends Partial<DialogProps> {
 }
@@ -99,7 +97,7 @@ export class ConfigStoneDialog extends React.Component<Props> {
 
   render() {
     const { ...dialogProps } = this.props;
-    const header = <h5><Trans>Update Stone</Trans></h5>;
+    const header = <h5>`Update Stone`</h5>;
     return (
       <Dialog
         {...dialogProps}
@@ -109,8 +107,8 @@ export class ConfigStoneDialog extends React.Component<Props> {
         close={this.close}
       >
         <Wizard header={header} done={this.close}>
-          <WizardStep contentClass="flow column" nextLabel={<Trans>Config Stone</Trans>} next={this.updateStone}>
-            <SubTitle title={<Trans>Strategy</Trans>} />
+          <WizardStep contentClass="flow column" nextLabel={`Config Stone`} next={this.updateStone}>
+            <SubTitle title={`Strategy`} />
             <Select
               value={this.strategy}
               options={this.options}
@@ -122,10 +120,10 @@ export class ConfigStoneDialog extends React.Component<Props> {
             {this?.containers?.map((item, index) => {
               return (
                 <>
-                  <SubTitle title={_i18n._(t`Image`) + '-' + index} />
+                  <SubTitle title={`Image` + '-' + index} />
                   <Input
                     required={true}
-                    placeholder={_i18n._(t`Request Images`)}
+                    placeholder={`Request Images`}
                     value={this.containers[index].image}
                     onChange={value => this.containers[index].image = value}
                   />
@@ -137,10 +135,10 @@ export class ConfigStoneDialog extends React.Component<Props> {
             {this?.coordinates?.map((item, index) => {
               return (
                 <>
-                  <SubTitle title={_i18n._(t`Group`) + '-' + this.coordinates[index].group} />
+                  <SubTitle title={`Group` + '-' + this.coordinates[index].group} />
                   <Input
                     required={true}
-                    placeholder={_i18n._(t`Request Replicas`)}
+                    placeholder={`Request Replicas`}
                     type="number"
                     validators={isNumber}
                     min={0}

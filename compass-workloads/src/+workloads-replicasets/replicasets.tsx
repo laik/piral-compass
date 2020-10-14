@@ -2,16 +2,15 @@ import "./replicasets.scss";
 
 import React from "react";
 import { observer } from "mobx-react";
-import { Trans } from "@lingui/macro";
-import { ReplicaSet, replicaSetApi } from "../../api/endpoints";
-import { KubeObjectMenu, KubeObjectMenuProps } from "../kube-object/kube-object-menu";
+import { ReplicaSet, replicaSetApi } from "compass-base/client/api/endpoints";
+import { KubeObjectMenu, KubeObjectMenuProps } from "compass-base/client/components/kube-object/kube-object-menu";
 import { replicaSetStore } from "./replicasets.store";
-import { Spinner } from "../spinner";
-import { prevDefault, stopPropagation } from "../../utils";
-import { DrawerTitle } from "../drawer";
-import { Table, TableCell, TableHead, TableRow } from "../table";
-import { showDetails } from "../../navigation";
-import { apiManager } from "../../api/api-manager";
+import { Spinner } from "compass-base/client/components/spinner";
+import { prevDefault, stopPropagation } from "compass-base/client/utils";
+import { DrawerTitle } from "compass-base/client/components/drawer";
+import { Table, TableCell, TableHead, TableRow } from "compass-base/client/components/table";
+import { showDetails } from "compass-base/client/components/navigation";
+import { apiManager } from "compass-base/client/api/api-manager";
 
 enum sortBy {
   name = "name",
@@ -45,7 +44,7 @@ export class ReplicaSets extends React.Component<Props> {
     if (!replicaSets.length) return null;
     return (
       <div className="ReplicaSets flex column">
-        <DrawerTitle title={<Trans>Deploy Revisions</Trans>}/>
+        <DrawerTitle title={`Deploy Revisions`}/>
         <Table
           selectable
           scrollable={false}
@@ -55,10 +54,10 @@ export class ReplicaSets extends React.Component<Props> {
           className="box grow"
         >
           <TableHead>
-            <TableCell className="name" sortBy={sortBy.name}><Trans>Name</Trans></TableCell>
+            <TableCell className="name" sortBy={sortBy.name}>`Name`</TableCell>
             <TableCell className="namespace" sortBy={sortBy.namespace}>Namespace</TableCell>
-            <TableCell className="pods" sortBy={sortBy.pods}><Trans>Pods</Trans></TableCell>
-            <TableCell className="age" sortBy={sortBy.age}><Trans>Age</Trans></TableCell>
+            <TableCell className="pods" sortBy={sortBy.pods}>`Pods`</TableCell>
+            <TableCell className="age" sortBy={sortBy.age}>`Age`</TableCell>
             <TableCell className="actions"/>
           </TableHead>
           {

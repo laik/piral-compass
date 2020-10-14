@@ -3,16 +3,15 @@ import "./cronjobs.scss";
 import React from "react";
 import { observer } from "mobx-react";
 import { RouteComponentProps } from "react-router";
-import { Trans } from "@lingui/macro";
-import { CronJob, cronJobApi } from "../../api/endpoints/cron-job.api";
+import { CronJob, cronJobApi } from "compass-base/client/api/endpoints/cron-job.api";
 import { cronJobStore } from "./cronjob.store";
 import { jobStore } from "../+workloads-jobs/job.store";
-import { eventStore } from "../+events/event.store";
-import { KubeObjectMenu, KubeObjectMenuProps } from "../kube-object/kube-object-menu";
+import { eventStore } from "compass-base/client/components/+events/event.store";
+import { KubeObjectMenu, KubeObjectMenuProps } from "compass-base/client/components/kube-object/kube-object-menu";
 import { ICronJobsRouteParams } from "../+workloads";
-import { KubeObjectListLayout } from "../kube-object";
-import { KubeEventIcon } from "../+events/kube-event-icon";
-import { apiManager } from "../../api/api-manager";
+import { KubeObjectListLayout } from "compass-base/client/components/kube-object";
+import { KubeEventIcon } from "compass-base/client/components/+events/kube-event-icon";
+import { apiManager } from "compass-base/client/api/api-manager";
 
 enum sortBy {
   name = "name",
@@ -45,16 +44,16 @@ export class CronJobs extends React.Component<Props> {
           (cronJob: CronJob) => cronJob.getSearchFields(),
           (cronJob: CronJob) => cronJob.getSchedule(),
         ]}
-        renderHeaderTitle={<Trans>Cron Jobs</Trans>}
+        renderHeaderTitle={`Cron Jobs`}
         renderTableHeader={[
-          { title: <Trans>Name</Trans>, className: "name", sortBy: sortBy.name },
+          { title: `Name`, className: "name", sortBy: sortBy.name },
           { className: "warning" },
-          { title: <Trans>Namespace</Trans>, className: "namespace", sortBy: sortBy.namespace },
-          { title: <Trans>Schedule</Trans>, className: "schedule" },
-          { title: <Trans>Suspend</Trans>, className: "suspend", sortBy: sortBy.suspend },
-          { title: <Trans>Active</Trans>, className: "active", sortBy: sortBy.active },
-          { title: <Trans>Last schedule</Trans>, className: "last-schedule", sortBy: sortBy.lastSchedule },
-          { title: <Trans>Age</Trans>, className: "age", sortBy: sortBy.age },
+          { title: `Namespace`, className: "namespace", sortBy: sortBy.namespace },
+          { title: `Schedule`, className: "schedule" },
+          { title: `Suspend`, className: "suspend", sortBy: sortBy.suspend },
+          { title: `Active`, className: "active", sortBy: sortBy.active },
+          { title: `Last schedule`, className: "last-schedule", sortBy: sortBy.lastSchedule },
+          { title: `Age`, className: "age", sortBy: sortBy.age },
         ]}
         renderTableContents={(cronJob: CronJob) => [
           cronJob.getName(),
@@ -64,7 +63,7 @@ export class CronJobs extends React.Component<Props> {
           }
           }/>,
           cronJob.getNs(),
-          cronJob.isNeverRun() ? <Trans>never</Trans> : cronJob.getSchedule(),
+          cronJob.isNeverRun() ? `never` : cronJob.getSchedule(),
           cronJob.getSuspendFlag(),
           cronJobStore.getActiveJobsNum(cronJob),
           cronJob.getLastScheduleTime(),

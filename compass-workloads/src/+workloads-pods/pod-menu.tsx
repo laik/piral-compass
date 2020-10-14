@@ -3,9 +3,9 @@ import "./pod-menu.scss";
 import * as React from "react";
 import { t, Trans } from "@lingui/macro";
 import { MenuItem, SubMenu } from "../menu";
-import { IPodContainer, Pod, nodesApi, podsApi } from "../../api/endpoints";
-import { Icon } from "../icon";
-import { StatusBrick } from "../status-brick";
+import { IPodContainer, Pod, nodesApi, podsApi } from "compass-base/client/api/endpoints";
+import { Icon } from "compass-base/client/components/icon";
+import { StatusBrick } from "compass-base/client/components/status-brick";
 import { PodLogsDialog } from "./pod-logs-dialog";
 import {
   KubeObjectMenu,

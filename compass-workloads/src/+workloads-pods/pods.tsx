@@ -1,26 +1,24 @@
 import "./pods.scss"
 
-import React, {Fragment} from "react";
+import React from "react";
 import {observer} from "mobx-react";
 import {Link} from "react-router-dom";
-import {Trans} from "@lingui/macro";
 import {podsStore} from "./pods.store";
 import {RouteComponentProps} from "react-router";
 import {volumeClaimStore} from "../+storage-volume-claims/volume-claim.store";
 import {IPodsRouteParams} from "../+workloads";
-import {eventStore} from "../+events/event.store";
-import {KubeObjectListLayout} from "../kube-object";
-import {Pod, podsApi} from "../../api/endpoints";
+import {eventStore} from "compass-base/client/components/+events/event.store";
+import {KubeObjectListLayout} from "compass-base/client/kube-object";
+import {Pod, podsApi} from "compass-base/client/api/endpoints";
 import {PodMenu} from "./pod-menu";
-import {stopPropagation} from "../../utils";
-import {KubeEventIcon} from "../+events/kube-event-icon";
-import {getDetailsUrl} from "../../navigation";
+import {stopPropagation} from "compass-base/client/utils";
+import {KubeEventIcon} from "compass-base/client/components/+events/kube-event-icon";
+import {getDetailsUrl} from "compass-base/client/navigation";
 import kebabCase from "lodash/kebabCase";
-import {lookupApiLink} from "../../api/kube-api";
-import {apiManager} from "../../api/api-manager";
+import {lookupApiLink} from "compass-base/client/api/kube-api";
+import {apiManager} from "compass-base/client/api/api-manager";
 import {PodContainerStatuses} from "./pod-container-statuses";
-import {TooltipContent} from "../tooltip";
-import {Tooltip} from "../tooltip";
+import {TooltipContent, Tooltip} from "compass-base/client/components/tooltip";
 
 enum sortBy {
   name = "name",
@@ -75,18 +73,18 @@ export class Pods extends React.Component<Props> {
           (pod: Pod) => pod.getSearchFields(),
           (pod: Pod) => pod.getStatusMessage(),
         ]}
-        renderHeaderTitle={<Trans>Pods</Trans>}
+        renderHeaderTitle={`Pods`}
         renderTableHeader={[
-          {title: <Trans>Name</Trans>, className: "name", sortBy: sortBy.name},
+          {title: `Name`, className: "name", sortBy: sortBy.name},
           {className: "warning"},
-          {title: <Trans>Namespace</Trans>, className: "namespace", sortBy: sortBy.namespace},
-          {title: <Trans>Containers</Trans>, className: "containers", sortBy: sortBy.containers},
-          {title: <Trans>Restarts</Trans>, className: "restarts", sortBy: sortBy.restarts},
-          {title: <Trans>Controlled By</Trans>, className: "owners", sortBy: sortBy.owners},
-          {title: <Trans>Node</Trans>, className: "node", sortBy: sortBy.node},
-          {title: <Trans>QoS</Trans>, className: "qos", sortBy: sortBy.qos},
-          {title: <Trans>Age</Trans>, className: "age", sortBy: sortBy.age},
-          {title: <Trans>Status</Trans>, className: "status", sortBy: sortBy.status},
+          {title: `Namespace`, className: "namespace", sortBy: sortBy.namespace},
+          {title: `Containers`, className: "containers", sortBy: sortBy.containers},
+          {title: `Restarts`, className: "restarts", sortBy: sortBy.restarts},
+          {title: `Controlled By`, className: "owners", sortBy: sortBy.owners},
+          {title: `Node`, className: "node", sortBy: sortBy.node},
+          {title: `QoS`, className: "qos", sortBy: sortBy.qos},
+          {title: `Age`, className: "age", sortBy: sortBy.age},
+          {title: `Status`, className: "status", sortBy: sortBy.status},
         ]}
         renderTableContents={(pod: Pod) => [
           pod.getName(),

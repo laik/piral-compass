@@ -3,25 +3,23 @@ import "./deployments.scss"
 import React from "react";
 import {observer} from "mobx-react";
 import {RouteComponentProps} from "react-router";
-import {t, Trans} from "@lingui/macro";
-import {Deployment, deploymentApi} from "../../api/endpoints";
-import {KubeObjectMenu, KubeObjectMenuProps} from "../kube-object";
-import {MenuItem} from "../menu";
-import {Icon} from "../icon";
+import {Deployment, deploymentApi} from "compass-base/client/api/endpoints";
+import {KubeObjectMenu, KubeObjectMenuProps} from "compass-base/client/components/kube-object";
+import {MenuItem} from "compass-base/client/components/menu";
+import {Icon} from "compass-base/client/components/icon";
 import {DeploymentScaleDialog} from "./deployment-scale-dialog";
 import {deploymentStore} from "./deployments.store";
 import {replicaSetStore} from "../+workloads-replicasets/replicasets.store";
 import {podsStore} from "../+workloads-pods/pods.store";
-import {nodesStore} from "../+nodes/nodes.store";
-import {eventStore} from "../+events/event.store";
-import {KubeObjectListLayout} from "../kube-object";
+import {nodesStore} from "compass-base/client/components/+nodes/nodes.store";
+import {eventStore} from "compass-base/client/components/+events/event.store";
+import {KubeObjectListLayout} from "compass-base/client/components/kube-object";
 import {IDeploymentsRouteParams} from "../+workloads";
-import {_i18n} from "../../i18n";
-import {cssNames, stopPropagation} from "../../utils";
+import {cssNames, stopPropagation} from "compass-base/client/utils";
 import kebabCase from "lodash/kebabCase";
 import orderBy from "lodash/orderBy";
-import {KubeEventIcon} from "../+events/kube-event-icon";
-import {apiManager} from "../../api/api-manager";
+import {KubeEventIcon} from "compass-base/client/components/+events/kube-event-icon";
+import {apiManager} from "compass-base/client/api/api-manager";
 import {Link} from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
 
@@ -81,15 +79,15 @@ export class Deployments extends React.Component<Props> {
             (deployment: Deployment) => deployment.getSearchFields(),
             (deployment: Deployment) => deployment.getConditionsText(),
           ]}
-          renderHeaderTitle={<Trans>Deployments</Trans>}
+          renderHeaderTitle={`Deployments`}
           renderTableHeader={[
-            {title: <Trans>Name</Trans>, className: "name", sortBy: sortBy.name},
-            {title: <Trans>Namespace</Trans>, className: "namespace", sortBy: sortBy.namespace},
-            {title: <Trans>Pods</Trans>, className: "pods"},
-            {title: <Trans>Replicas</Trans>, className: "replicas", sortBy: sortBy.replicas},
+            {title: `Name`, className: "name", sortBy: sortBy.name},
+            {title: `Namespace`, className: "namespace", sortBy: sortBy.namespace},
+            {title: `Pods`, className: "pods"},
+            {title: `Replicas`, className: "replicas", sortBy: sortBy.replicas},
             {className: "warning"},
-            {title: <Trans>Age</Trans>, className: "age", sortBy: sortBy.age},
-            {title: <Trans>Conditions</Trans>, className: "conditions", sortBy: sortBy.condition},
+            {title: `Age`, className: "age", sortBy: sortBy.age},
+            {title: `Conditions`, className: "conditions", sortBy: sortBy.condition},
           ]}
           renderTableContents={(deployment: Deployment) => [
             this.renderDeploymentName(deployment),
@@ -115,8 +113,8 @@ export function DeploymentMenu(props: KubeObjectMenuProps<Deployment>) {
   return (
     <KubeObjectMenu {...props}>
       <MenuItem onClick={() => DeploymentScaleDialog.open(object)}>
-        <Icon material="control_camera" title={_i18n._(t`Scale`)} interactive={toolbar}/>
-        <span className="title"><Trans>Scale</Trans></span>
+        <Icon material="control_camera" title={`Scale`} interactive={toolbar}/>
+        <span className="title">`Scale`</span>
       </MenuItem>
     </KubeObjectMenu>
   )

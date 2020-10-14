@@ -16,10 +16,12 @@
     "jsx": "preserve",
     "importHelpers": true,
     "allowSyntheticDefaultImports":true,
-    "allowJs": true
+    "allowJs": true,
+    "esModuleInterop": true,
   },
   "include": [
     "./src",
+    "./src/+workloads-pods",
     "./node_modules"
   ]
 }

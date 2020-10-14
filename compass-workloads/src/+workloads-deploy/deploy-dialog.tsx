@@ -1,17 +1,14 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { Dialog, DialogProps } from "../dialog";
+import { Dialog, DialogProps } from "compass-base/client/components/dialog";
 import { observable } from "mobx";
-import { Namespace } from "../../api/endpoints";
-import { Input } from "../input"
-import { Wizard, WizardStep } from "../wizard";
-import { t, Trans } from "@lingui/macro";
-import { SubTitle } from "../layout/sub-title";
-import { _i18n } from "../../i18n";
-import { NamespaceSelect } from "../+namespaces/namespace-select";
-import { apiBase } from "../../api";
-import { Notifications } from "../notifications";
-import { NamespaceAllowStorageClassSelect } from "../+namespaces/namespace-allow-storageclass-select";
+import { Input } from "compass-base/client/components/input"
+import { Wizard, WizardStep } from "compass-base/client/components/wizard";
+import { SubTitle } from "compass-base/client/components/layout/sub-title";
+import { NamespaceSelect } from "compass-base/client/components/+namespaces/namespace-select";
+import { apiBase } from "compass-base/client/api";
+import { Notifications } from "compass-base/client/components/notifications";
+import { NamespaceAllowStorageClassSelect } from "compass-base/client/components/+namespaces/namespace-allow-storageclass-select";
 
 interface Props extends Partial<DialogProps> {
 }
@@ -77,7 +74,7 @@ export class DeployDialog extends React.Component<Props> {
 
   render() {
     const { ...dialogProps } = this.props;
-    const header = <h5><Trans>Deploy</Trans></h5>;
+    const header = <h5>`Deploy`</h5>;
     return (
       <Dialog
         {...dialogProps}
@@ -86,32 +83,32 @@ export class DeployDialog extends React.Component<Props> {
         close={this.close}
       >
         <Wizard header={header} done={this.close}>
-          <WizardStep contentClass="flow column" nextLabel={<Trans>Create</Trans>}
+          <WizardStep contentClass="flow column" nextLabel={`Create`}
             next={this.updateDeploy}>
             <div className="namespace">
-              <SubTitle title={<Trans>Namespace</Trans>} />
+              <SubTitle title={`Namespace`} />
               <NamespaceSelect
                 value={this.namespace}
-                placeholder={_i18n._(t`Namespace`)}
+                placeholder={`Namespace`}
                 themeName="light"
                 className="box grow"
                 onChange={(v) => this.namespace = v.value}
               />
 
-              <SubTitle title={<Trans>StorageClass</Trans>} />
+              <SubTitle title={`StorageClass`} />
               <NamespaceAllowStorageClassSelect
                 themeName="light"
                 className="box grow"
-                placeholder={_i18n._(t`StorageClass`)}
+                placeholder={`StorageClass`}
                 namespaceName={this.namespace}
                 value={this.storageClass}
                 onChange={({ value }) => this.storageClass = value}
               />
 
-              <SubTitle title={<Trans>Replicas</Trans>} />
+              <SubTitle title={`Replicas`} />
               <Input
                 autoFocus
-                placeholder={_i18n._(t`Replicas`)}
+                placeholder={`Replicas`}
                 value={this.replicas}
                 onChange={v => this.replicas = v}
               />

@@ -2,21 +2,19 @@ import "./deploy.store.ts";
 
 import React from "react";
 import { observer } from "mobx-react";
-import { MenuItem } from "../menu";
-import { Icon } from "../icon";
-import { _i18n } from "../../i18n"
+import { MenuItem } from "compass-base/client/components/menu";
+import { Icon } from "compass-base/client/components/icon";
 import { RouteComponentProps } from "react-router";
-import { t, Trans } from "@lingui/macro";
-import { Deploy, deployApi } from "../../api/endpoints";
-import { KubeObjectMenu, KubeObjectMenuProps } from "../kube-object";
-import { KubeObjectListLayout } from "../kube-object";
+import { Deploy, deployApi } from "compass-base/client/api/endpoints";
+import { KubeObjectMenu, KubeObjectMenuProps } from "compass-base/client/components/kube-object";
+import { KubeObjectListLayout } from "compass-base/client/components/kube-object";
 import { DeployDialog, AddDeployDialog } from "../+workloads-deploy";
 import { IDeployWorkloadsParams } from "../+workloads"
-import { apiManager } from "../../api/api-manager";
+import { apiManager } from "compass-base/client/api/api-manager";
 import { deployStore } from "./deploy.store";
 import { ConfigDeployDialog } from "./config-deploy-dialog";
 import { Link } from "react-router-dom";
-import { stopPropagation } from "../../utils";
+import { stopPropagation } from "compass-base/client/utils";
 import Tooltip from "@material-ui/core/Tooltip";
 
 enum sortBy {
@@ -64,19 +62,19 @@ export class Deploys extends React.Component<Props> {
             [
               (deploy: Deploy) => deploy.getSearchFields(),
             ]}
-          renderHeaderTitle={< Trans> Deploys </Trans>}
+          renderHeaderTitle={`Deploys`}
           renderTableHeader={
             [
-              { title: <Trans>AppName</Trans>, className: "appName", sortBy: sortBy.appName },
-              { title: <Trans>TemplateName</Trans>, className: "template", sortBy: sortBy.templateName },
-              { title: <Trans>OwnerNamespace</Trans>, className: "OwnerNamespace", sortBy: sortBy.ownerNamespace },
-              { title: <Trans>ResourceType</Trans>, className: "resourceType", sortBy: sortBy.resourceType },
+              { title: `AppName`, className: "appName", sortBy: sortBy.appName },
+              { title: `TemplateName`, className: "template", sortBy: sortBy.templateName },
+              { title: `OwnerNamespace`, className: "OwnerNamespace", sortBy: sortBy.ownerNamespace },
+              { title: `ResourceType`, className: "resourceType", sortBy: sortBy.resourceType },
               {
-                title: <Trans>Created</Trans>,
+                title: `Created`,
                 className: "Created",
                 sortBy: sortBy.generateTimestamp
               },
-              { title: <Trans>Age</Trans>, className: "age", sortBy: sortBy.age },
+              { title: `Age`, className: "age", sortBy: sortBy.age },
             ]}
           renderTableContents={(deploy: Deploy) => [
             // deploy.getAppName(),
@@ -91,7 +89,7 @@ export class Deploys extends React.Component<Props> {
             return <DeployMenu object={item} />
           }}
           addRemoveButtons={{
-            addTooltip: <Trans>AddDeployDialog</Trans>,
+            addTooltip: `AddDeployDialog`,
             onAdd: () => AddDeployDialog.open()
           }}
         />
@@ -111,14 +109,14 @@ export function DeployMenu(props: KubeObjectMenuProps<Deploy>) {
         <MenuItem onClick={() => {
           DeployDialog.open(object.getAppName(), object.getName())
         }}>
-          <Icon material="play_circle_filled" title={_i18n._(t`Deploy`)} interactive={toolbar} />
-          <span className="title"><Trans>Deploy</Trans></span>
+          <Icon material="play_circle_filled" title={`Deploy`} interactive={toolbar} />
+          <span className="title">`Deploy`</span>
         </MenuItem>
         <MenuItem onClick={() => {
           ConfigDeployDialog.open(object)
         }}>
-          <Icon material="sync_alt" title={_i18n._(t`Config`)} interactive={toolbar} />
-          <span className="title"><Trans>Config</Trans></span>
+          <Icon material="sync_alt" title={`Config`} interactive={toolbar} />
+          <span className="title">`Config`</span>
         </MenuItem>
       </KubeObjectMenu>
     </>

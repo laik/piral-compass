@@ -3,15 +3,13 @@ import "./pod-logs-dialog.scss";
 import * as React from "react";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
-import { t, Trans } from "@lingui/macro";
-import { _i18n } from "../../i18n";
-import { Dialog, DialogProps } from "../dialog";
-import { Wizard, WizardStep } from "../wizard";
-import { IPodContainer, Pod, podsApi } from "../../api/endpoints";
-import { Icon } from "../icon";
-import { Select, SelectOption } from "../select";
-import { Spinner } from "../spinner";
-import { cssNames, downloadFile, interval } from "../../utils";
+import { Dialog, DialogProps } from "compass-base/client/components/dialog";
+import { Wizard, WizardStep } from "compass-base/client/components/wizard";
+import { IPodContainer, Pod, podsApi } from "compass-base/client/api/endpoints";
+import { Icon } from "compass-base/client/components/icon";
+import { Select, SelectOption } from "compass-base/client/components/select";
+import { Spinner } from "compass-base/client/components/spinner";
+import { cssNames, downloadFile, interval } from "compass-base/client/utils";
 
 interface IPodLogsDialogData {
   pod: Pod;
@@ -53,7 +51,7 @@ export class PodLogsDialog extends React.Component<Props> {
   @observable tailLines = 1000;
 
   lineOptions = [
-    { label: _i18n._(t`All logs`), value: Number.MAX_SAFE_INTEGER },
+    { label: `All logs`, value: Number.MAX_SAFE_INTEGER },
     { label: 1000, value: 1000 },
     { label: 10000, value: 10000 },
     { label: 100000, value: 100000 },
@@ -104,8 +102,8 @@ export class PodLogsDialog extends React.Component<Props> {
       }
     } catch (error) {
       this.logs = [
-        _i18n._(t`Failed to load logs: ${error.message}`),
-        _i18n._(t`Reason: ${error.reason} (${error.code})`),
+        `Failed to load logs: ${error.message}`,
+        `Reason: ${error.reason} (${error.code})`,
       ].join("\n")
     }
     this.logsReady = true;
@@ -186,13 +184,13 @@ export class PodLogsDialog extends React.Component<Props> {
   get containerSelectOptions() {
     return [
       {
-        label: _i18n._(t`Containers`),
+        label: `Containers`,
         options: this.containers.map(container => {
           return { value: container.name }
         }),
       },
       {
-        label: _i18n._(t`Init Containers`),
+        label: `Init Containers`,
         options: this.initContainers.map(container => {
           return { value: container.name }
         }),
@@ -213,19 +211,19 @@ export class PodLogsDialog extends React.Component<Props> {
     return (
       <div className="controls flex align-center">
         <div className="time-range">
-          {timestamps && <Trans>From <b>{from}</b> to <b>{to}</b></Trans>}
+          {timestamps && `From <b>{from}</b> to <b>{to}</b>`}
         </div>
         <div className="control-buttons flex gaps">
           <Icon
             material="av_timer"
             onClick={this.toggleTimestamps}
             className={cssNames("timestamps-icon", { active: showTimestamps })}
-            tooltip={(showTimestamps ? _i18n._(t`Hide`) : _i18n._(t`Show`)) + " " + _i18n._(t`timestamps`)}
+            tooltip={(showTimestamps ? `Hide` : `Show`) + " " + `timestamps`}
           />
           <Icon
             material="save_alt"
             onClick={this.downloadLogs}
-            tooltip={_i18n._(t`Save`)}
+            tooltip={`Save`}
           />
         </div>
       </div>
@@ -238,14 +236,14 @@ export class PodLogsDialog extends React.Component<Props> {
     }
     const { logs, newLogs } = this.getLogs();
     if (!logs && !newLogs) {
-      return <p className="no-logs"><Trans>There are no logs available for container.</Trans></p>
+      return <p className="no-logs">`There are no logs available for container.`</p>
     }
     return (
       <>
         {logs}
         {newLogs && (
           <>
-            <p className="new-logs-sep" title={_i18n._(t`New logs since opening the dialog`)}/>
+            <p className="new-logs-sep" title={`New logs since opening the dialog`}/>
             {newLogs}
           </>
         )}
@@ -257,7 +255,7 @@ export class PodLogsDialog extends React.Component<Props> {
     const { ...dialogProps } = this.props;
     const { selectedContainer, tailLines } = this;
     const podName = this.data ? this.data.pod.getName() : "";
-    const header = <h5><Trans>{podName} Logs</Trans></h5>;
+    const header = <h5>`{podName} Logs`</h5>;
     return (
       <Dialog
         {...dialogProps}
@@ -268,10 +266,10 @@ export class PodLogsDialog extends React.Component<Props> {
         close={this.close}
       >
         <Wizard header={header} done={this.close}>
-          <WizardStep hideNextBtn prevLabel={<Trans>Close</Trans>}>
+          <WizardStep hideNextBtn prevLabel={`Close`}>
             <div className="log-controls flex gaps align-center justify-space-between">
               <div className="container flex gaps align-center">
-                <span><Trans>Container</Trans></span>
+                <span>`Container`</span>
                 {selectedContainer && (
                   <Select
                     className="container-selector"
@@ -283,7 +281,7 @@ export class PodLogsDialog extends React.Component<Props> {
                     autoConvertOptions={false}
                   />
                 )}
-                <span><Trans>Lines</Trans></span>
+                <span>`Lines`</span>
                 <Select
                   value={tailLines}
                   options={this.lineOptions}

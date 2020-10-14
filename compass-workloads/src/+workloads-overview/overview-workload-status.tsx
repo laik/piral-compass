@@ -5,10 +5,10 @@ import capitalize from "lodash/capitalize";
 import { findDOMNode } from 'react-dom';
 import { observable } from "mobx";
 import { observer } from "mobx-react";
-import { PieChart } from "../chart";
-import { cssVar } from "../../utils";
+import { PieChart } from "compass-base/client/components/chart";
+import { cssVar } from "compass-base/client/utils";
 import { ChartData } from "chart.js";
-import { themeStore } from "../../theme.store";
+import { themeStore } from "compass-base/client/theme.store";
 
 interface Props {
   status: {
