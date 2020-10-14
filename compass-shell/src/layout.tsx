@@ -6,18 +6,6 @@ import {themeStore} from "compass-base/client/theme.store";
 import {Sidebar} from "compass-base/client/components/layout/sidebar";
 import "compass-base/client/components/layout/main-layout.scss";
 
-
-export const errors: Partial<ErrorComponentsState> = {
-  not_found: () => (
-    <div>
-      <p className="error">Could not find the requested page. Are you sure it exists?</p>
-      <p>
-        Go back <Link to="/">to the dashboard</Link>.
-      </p>
-    </div>
-  ),
-};
-
 export const layout: Partial<ComponentsState> = {
   ErrorInfo: props => (
     <div>
@@ -36,6 +24,7 @@ export const layout: Partial<ComponentsState> = {
   ),
   DashboardTile: ({columns, rows, children}) => <div className={`tile cols-${columns} rows-${rows}`}>{children}</div>,
   Layout: ({ children }) => {
+
     return (
       <div className={cssNames("MainLayout", themeStore.activeTheme.type)}>
         <header className={cssNames("flex gaps align-center")}>
