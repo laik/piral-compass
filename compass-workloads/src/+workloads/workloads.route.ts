@@ -2,11 +2,11 @@ import {RouteProps} from "react-router"
 import {Workloads} from "./workloads";
 import {buildURL, IURLParams} from "compass-base/client/navigation";
 
-export const workloadsRoute: RouteProps = {
-  get path() {
-    return Workloads.tabRoutes.map(({path}) => path).flat()
-  }
-}
+// export const workloadsRoute: RouteProps = {
+//   get path() {
+//     return Workloads.tabRoutes.map(({path}) => path).flat()
+//   }
+// }
 
 // Routes
 export const overviewRoute: RouteProps = {
