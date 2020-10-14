@@ -1,6 +1,6 @@
 import {RouteProps} from "react-router"
 import {Workloads} from "./workloads";
-import {buildURL, IURLParams} from "../../navigation";
+import {buildURL, IURLParams} from "compass-base/client/navigation";
 
 export const workloadsRoute: RouteProps = {
   get path() {

@@ -5,8 +5,7 @@ import store from "store";
 import { observer } from "mobx-react";
 import { Redirect, Route, Switch } from "react-router";
 import { RouteComponentProps } from "react-router-dom";
-import { Trans } from "@lingui/macro";
-import { MainLayout, TabRoute } from "../layout/main-layout";
+import { MainLayout, TabRoute } from "compass-base/client/components/layout/main-layout";
 import { WorkloadsOverview } from "../+workloads-overview/overview";
 import {
   watersRoute,
@@ -35,7 +34,7 @@ import {
   deployRoute,
   deployURL
 } from "./workloads.route";
-import { namespaceStore } from "../+namespaces/namespace.store";
+import { namespaceStore } from "compass-base/client/components/+namespaces/namespace.store";
 import { Pods } from "../+workloads-pods";
 import { Deployments } from "../+workloads-deployments";
 import { DaemonSets } from "../+workloads-daemonsets";
@@ -59,31 +58,31 @@ export class Workloads extends React.Component<Props> {
     const isClusterAdmin = userConfig ? userConfig.isClusterAdmin : false
     let items = [
       {
-        title: <Trans>Overview</Trans>,
+        title: `Overview`,
         component: WorkloadsOverview,
         url: overviewURL({ query }),
         path: overviewRoute.path
       },
       {
-        title: <Trans>Deploy</Trans>,
+        title: `Deploy`,
         component: Deploys,
         url: deployURL({ query }),
         path: deployRoute.path
       },
       {
-        title: <Trans>Stones</Trans>,
+        title: `Stones`,
         component: Stones,
         url: stonesURL({ query }),
         path: stonesRoute.path
       },
       {
-        title: <Trans>StatefulSets*</Trans>,
+        title: `StatefulSets*`,
         component: EnhanceStatefulSets,
         url: enhanceStatefulSetsURL({ query }),
         path: enhanceStatefulsetsRoute.path
       },
       {
-        title: <Trans>Pods</Trans>,
+        title: `Pods`,
         component: Pods,
         url: podsURL({ query }),
         path: podsRoute.path
@@ -93,43 +92,43 @@ export class Workloads extends React.Component<Props> {
     if (isClusterAdmin) {
       items.push(
         {
-          title: <Trans>Waters</Trans>,
+          title: `Waters`,
           component: Waters,
           url: watersURL({ query }),
           path: watersRoute.path
         },
         {
-          title: <Trans>Injectors</Trans>,
+          title: `Injectors`,
           component: Injectors,
           url: injectorURL({ query }),
           path: injectorsRoute.path
         },
         {
-          title: <Trans>Deployments</Trans>,
+          title: `Deployments`,
           component: Deployments,
           url: deploymentsURL({ query }),
           path: deploymentsRoute.path,
         },
         {
-          title: <Trans>DaemonSets</Trans>,
+          title: `DaemonSets`,
           component: DaemonSets,
           url: daemonSetsURL({ query }),
           path: daemonSetsRoute.path,
         },
         {
-          title: <Trans>StatefulSets</Trans>,
+          title: `StatefulSets`,
           component: StatefulSets,
           url: statefulSetsURL({ query }),
           path: statefulSetsRoute.path,
         },
         {
-          title: <Trans>Jobs</Trans>,
+          title: `Jobs`,
           component: Jobs,
           url: jobsURL({ query }),
           path: jobsRoute.path,
         },
         {
-          title: <Trans>CronJobs</Trans>,
+          title: `CronJobs`,
           component: CronJobs,
           url: cronJobsURL({ query }),
           path: cronJobsRoute.path,
