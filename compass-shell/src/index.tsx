@@ -10,12 +10,12 @@ themeStore.setTheme('kontena-light');
 renderInstance({
   layout,
   errors,
-  requestPilets() {
-    return new Promise((resolve) => setTimeout(() => resolve([]), 1000));
-  }
   // requestPilets() {
-  //   return fetch('http://localhost:9000/api/v1/pilet')
-  //   .then(res => res.json())
-  //   .then(res => res.items);
-  // },
+  //   return new Promise((resolve) => setTimeout(() => resolve([]), 1000));
+  // }
+  requestPilets() {
+    return fetch('http://localhost:9000/api/v1/pilet')
+    .then(res => res.json())
+    .then(res => res.items);
+  }
 });

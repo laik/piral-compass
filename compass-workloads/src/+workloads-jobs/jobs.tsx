@@ -13,7 +13,7 @@ import { IJobsRouteParams } from "../+workloads";
 import { KubeEventIcon } from "compass-base/client/components/+events/kube-event-icon";
 import kebabCase from "lodash/kebabCase";
 import { apiManager } from "compass-base/client/api/api-manager";
-import { PageComponentProps } from "piral-core";
+import { PageComponentProps } from "compass-shell";
 
 enum sortBy {
   name = "name",
@@ -26,7 +26,7 @@ interface Props extends PageComponentProps<IJobsRouteParams> {
 }
 
 @observer
-export class Jobs extends React.Component<Props, any> {
+export class Jobs extends React.Component<PageComponentProps, any> {
   render() {
     return (
       <KubeObjectListLayout
