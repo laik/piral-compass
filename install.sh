@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a pilets=("")
+declare -a pilets=("compass-workloads")
 
 # shellcheck disable=SC2164
 cd compass-shell
