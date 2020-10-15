@@ -4097,7 +4097,7 @@ compass-base@../compass/compass-base-0.1.1.tgz:
 
 compass-shell@../compass-shell/dist/emulator/compass-shell-1.0.0.tgz:
   version "1.0.0"
-  resolved "../compass-shell/dist/emulator/compass-shell-1.0.0.tgz#27e510cf2975af018f72e4e4bb645177fe9fe0da"
+  resolved "../compass-shell/dist/emulator/compass-shell-1.0.0.tgz#e25dcb5e1859a972cf28bfa7ff4b1c2a35012911"
 
 component-emitter@^1.2.1:
   version "1.3.0"

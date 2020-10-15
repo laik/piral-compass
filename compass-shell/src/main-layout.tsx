@@ -20,12 +20,26 @@ import {kubeWatchApi } from 'compass-base/client/api/kube-watch-api'
 import store from 'store'
 import {Notifications} from "compass-base/client/components/notifications";
 
+import {LayoutProps} from "piral";
+
 export interface TabRoute extends RouteProps {
   title: React.ReactNode;
   url: string;
 }
 
-interface Props extends RouteComponentProps{
+// interface Props extends RouteComponentProps{
+//   className?: any;
+//   tabs?: TabRoute[];
+//   footer?: React.ReactNode;
+//   headerClass?: string;
+//   contentClass?: string;
+//   footerClass?: string;
+// }
+interface State{
+
+}
+
+interface Props extends LayoutProps {
   className?: any;
   tabs?: TabRoute[];
   footer?: React.ReactNode;
@@ -33,12 +47,9 @@ interface Props extends RouteComponentProps{
   contentClass?: string;
   footerClass?: string;
 }
-interface State{
-
-}
 
 @observer
-export class Layout extends React.Component<Props,State> {
+export class Layout extends React.PureComponent<Props, any> {
   public storage = createStorage("main_layout", { pinnedSidebar: true });
 
   @observable isPinned = this.storage.get().pinnedSidebar;
@@ -109,7 +120,7 @@ export class Layout extends React.Component<Props,State> {
     const { className, contentClass, headerClass, tabs, footer, footerClass, children } = this.props;
     const { clusterName, lensVersion, kubectlAccess } = configStore.config;
     const { pathname } = navigation.location;
-    this.ifLogin()
+    // this.ifLogin()
     return (
       <div className={cssNames("MainLayout", className, themeStore.activeTheme.type)}>
         <header className={cssNames("flex gaps align-center", headerClass)}>
