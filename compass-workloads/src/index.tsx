@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { PiletApi } from 'compass-shell';
 import {Jobs} from "./+workloads-jobs";
+import "compass-base/client/components/app.scss";
 
 export function setup(app: PiletApi) {
   app.showNotification('Hello from Piral!', {
@@ -9,5 +10,5 @@ export function setup(app: PiletApi) {
   app.registerMenu(() =>
     <a href="https://docs.piral.io" target="_blank">Documentation</a>
   );
-  app.registerPage("/events", Jobs);
+  app.registerPage("/hello", Jobs);
 }

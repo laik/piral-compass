@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {ComponentsState, ErrorComponentsState, SwitchErrorInfo, MenuItemProps, Menu, Notifications} from 'piral';
 import {Link, matchPath} from 'react-router-dom';
-import {cssNames} from "compass-base/client/utils/index";
-import {themeStore} from "compass-base/client/theme.store";
-import {Sidebar} from "compass-base/client/components/layout/sidebar";
+// import {cssNames} from "compass-base/client/utils/index";
+// import {themeStore} from "compass-base/client/theme.store";
+// import {Sidebar} from "compass-base/client/components/layout/sidebar";
 import "compass-base/client/components/layout/main-layout.scss";
+import {Layout} from "./main-layout";
 
 export const errors: Partial<ErrorComponentsState> = {
   not_found: () => (
@@ -34,28 +35,28 @@ export const layout: Partial<ComponentsState> = {
     </div>
   ),
   DashboardTile: ({columns, rows, children}) => <div className={`tile cols-${columns} rows-${rows}`}>{children}</div>,
-  Layout: ({ children }) => {
-
-    return (
-      <div className={cssNames("MainLayout", themeStore.activeTheme.type)}>
-        <header className={cssNames("flex gaps align-center")}>
-          <div className="box grow flex align-center" />
-        </header>
-
-        <aside className={cssNames("flex column", { pinned: true, accessible: true })}>
-          <Sidebar
-            className="box grow"
-            isPinned={true}
-            toggle={() => {}}
-          />
-        </aside>
-
-        <main>
-          {children}
-        </main>
-      </div>
-    )
-  },
+  // Layout: ({ children }) => {
+  //   return (
+  //     <div className={cssNames("MainLayout", themeStore.activeTheme.type)}>
+  //       <header className={cssNames("flex gaps align-center")}>
+  //         <div className="box grow flex align-center" />
+  //       </header>
+  //
+  //       <aside className={cssNames("flex column", { pinned: true, accessible: true })}>
+  //         <Sidebar
+  //           className="box grow"
+  //           isPinned={true}
+  //           toggle={() => {}}
+  //         />
+  //       </aside>
+  //
+  //       <main>
+  //         {children}
+  //       </main>
+  //     </div>
+  //   )
+  // },
+  Layout: Layout,
   MenuContainer: ({children}) => {
     const [collapsed, setCollapsed] = React.useState(true);
     return (

@@ -1,7 +1,10 @@
 //-- Mixins
+@import "workloads-mixins";
+@import "storage-mixins";
 @import "+nodes/nodes-mixins";
 @import "+namespaces/namespaces-mixins";
 @import "table/table.mixins";
+@import "network-mixins";
 
 @mixin custom-scrollbar($theme: light, $size: 7px, $borderSpacing: 5px) {
   $themes: (

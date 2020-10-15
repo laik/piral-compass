@@ -22,7 +22,7 @@ interface Props extends RouteComponentProps {
 }
 
 @observer
-class LoginComponet extends React.Component<Props> {
+class LoginComponent extends React.Component<Props> {
 
   @observable username = ''
   @observable password = ''
@@ -121,4 +121,4 @@ class LoginComponet extends React.Component<Props> {
   }
 }
 
-export const Login = withRouter(LoginComponet);
+export const Login = withRouter(LoginComponent);

@@ -1,8 +1,8 @@
 
 .JobDetails {
   .conditions {
-    //.Badge {
-    //  @include job-condition-bgs;
-    //}
+    .Badge {
+      @include job-condition-bgs;
+    }
   }
 }
