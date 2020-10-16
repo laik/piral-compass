@@ -134,12 +134,12 @@ interface SidebarNavItemProps {
   subMenus?: TabRoute[];
 }
 
-const navItemStorage = createStorage<[string, boolean][]>("sidebar_menu_item", []);
-const navItemState = observable.map<string, boolean>(navItemStorage.get());
+export const navItemStorage = createStorage<[string, boolean][]>("sidebar_menu_item", []);
+export const navItemState = observable.map<string, boolean>(navItemStorage.get());
 reaction(() => [...navItemState], value => navItemStorage.set(value));
 
 @observer
-class SidebarNavItem extends React.Component<SidebarNavItemProps> {
+export class SidebarNavItem extends React.Component<SidebarNavItemProps> {
   static contextType = SidebarContext;
   public context: SidebarContextValue;
 

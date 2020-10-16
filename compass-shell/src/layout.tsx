@@ -3,6 +3,8 @@ import {ComponentsState, ErrorComponentsState, SwitchErrorInfo, MenuItemProps, M
 import {Link, matchPath} from 'react-router-dom';
 import "compass-base/client/components/layout/main-layout.scss";
 import {Layout} from "./main-layout";
+import {SidebarNavItem} from "./sidebar";
+import {Icon} from "compass-base/client/components/icon";
 
 export const errors: Partial<ErrorComponentsState> = {
   not_found: () => (
@@ -35,32 +37,18 @@ export const layout: Partial<ComponentsState> = {
   DashboardTile: ({columns, rows, children}) => <div className={`tile cols-${columns} rows-${rows}`}>{children}</div>,
   Layout: Layout,
   MenuContainer: ({children}) => {
-    const [collapsed, setCollapsed] = React.useState(true);
+    console.log(children);
     return (
-      <header>
-        <nav
-          className="navbar navbar-light navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3">
-          <div className="container">
-            <Link className="navbar-brand" to="/">
-              Piral
-            </Link>
-            <button
-              aria-label="Toggle navigation"
-              type="button"
-              onClick={() => setCollapsed(!collapsed)}
-              className="navbar-toggler mr-2">
-              <span className="navbar-toggler-icon"/>
-            </button>
-            <div
-              className={`collapse navbar-collapse d-sm-inline-flex flex-sm-row-reverse ${collapsed ? '' : 'show'}`}
-              aria-expanded={!collapsed}>
-              <ul className="navbar-nav flex-grow">
-                {children}
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
+      <>
+        <SidebarNavItem
+          id="events"
+          url={""}
+          routePath={""}
+          icon={<Icon material="access_time"/>}
+          text={`Events`}
+        />
+        {children}
+      </>
     );
   },
   NotificationsHost: ({children}) => <div className="notifications">{children}</div>,

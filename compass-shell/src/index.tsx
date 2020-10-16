@@ -3,6 +3,7 @@ import { renderInstance } from 'piral';
 import { layout, errors } from './layout';
 import {themeStore} from "compass-base/client/theme.store";
 import "compass-base/client/components/app.scss";
+import { createMenuApi } from 'piral-menu';
 
 // change to your feed URL here (either using feed.piral.cloud or your own service)
 
@@ -11,6 +12,7 @@ themeStore.setTheme('kontena-light');
 renderInstance({
   layout,
   errors,
+  extendApi: [createMenuApi()],
   requestPilets() {
     return new Promise((resolve) => setTimeout(() => resolve([]), 1000));
   }

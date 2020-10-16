@@ -7,7 +7,8 @@ import { matchPath, RouteProps } from "react-router-dom";
 import { createStorage, cssNames } from "compass-base/client/utils";
 import { Tab, Tabs } from "compass-base/client/components/tabs";
 import { Icon } from "compass-base/client/components/icon";
-import { Sidebar } from "compass-base/client/components/layout/sidebar";
+// import { Sidebar } from "compass-base/client/components/layout/sidebar";
+import {Sidebar} from "./sidebar";
 import { configStore } from "compass-base/client/config.store";
 import { ErrorBoundary } from "compass-base/client/components/error-boundary";
 import { Dock } from "compass-base/client/components/dock";
@@ -15,8 +16,8 @@ import { MenuItem } from "compass-base/client/components/menu";
 import { MenuActions } from "compass-base/client/components/menu/menu-actions";
 import { navigate, navigation } from "compass-base/client/navigation";
 import { themeStore } from "compass-base/client/theme.store";
-import {withRouter,RouteComponentProps } from 'react-router';
-import {kubeWatchApi } from 'compass-base/client/api/kube-watch-api'
+// import {withRouter,RouteComponentProps } from 'react-router';
+import {kubeWatchApi } from 'compass-base/client/api/kube-watch-api';
 import store from 'store'
 import {Notifications} from "compass-base/client/components/notifications";
 
@@ -35,6 +36,7 @@ export interface TabRoute extends RouteProps {
 //   contentClass?: string;
 //   footerClass?: string;
 // }
+
 interface State{
 
 }
@@ -104,11 +106,11 @@ export class Layout extends React.PureComponent<Props, any> {
         >
           <MenuItem onClick={this.changeTheme}>
             <Icon material="brightness_medium" />
-            <span className="title">`Theme`</span>
+            <span className="title">Theme</span>
           </MenuItem>
           <MenuItem onClick={this.loginout}>
             <Icon material="exit_to_app" />
-            <span className="title">`Logout`</span>
+            <span className="title">Logout</span>
           </MenuItem>
         </MenuActions>
       </div>

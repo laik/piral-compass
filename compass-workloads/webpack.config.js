@@ -1,4 +1,3 @@
-
 function removeModuleRules(compassConfig, rule) {
 
   for (let i=0; i < compassConfig.module.rules.length; i++) {
