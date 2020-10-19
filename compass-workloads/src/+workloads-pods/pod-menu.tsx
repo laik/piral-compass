@@ -1,8 +1,7 @@
 import "./pod-menu.scss";
 
 import * as React from "react";
-import { t, Trans } from "@lingui/macro";
-import { MenuItem, SubMenu } from "../menu";
+import { MenuItem, SubMenu } from "compass-base/client/components/menu";
 import { IPodContainer, Pod, nodesApi, podsApi } from "compass-base/client/api/endpoints";
 import { Icon } from "compass-base/client/components/icon";
 import { StatusBrick } from "compass-base/client/components/status-brick";
@@ -10,11 +9,10 @@ import { PodLogsDialog } from "./pod-logs-dialog";
 import {
   KubeObjectMenu,
   KubeObjectMenuProps,
-} from "../kube-object/kube-object-menu";
-import { cssNames, prevDefault } from "../../utils";
-import { terminalStore } from "../dock/terminal.store";
-import { _i18n } from "../../i18n";
-import { hideDetails } from "../../navigation";
+} from "compass-base/client/components/kube-object/kube-object-menu";
+import { cssNames, prevDefault } from "compass-base/client/utils";
+import { terminalStore } from "compass-base/client/components/dock/terminal.store";
+import { hideDetails } from "compass-base/client/navigation";
 
 interface Props extends KubeObjectMenuProps<Pod> {}
 
@@ -54,9 +52,9 @@ export class PodMenu extends React.Component<Props> {
           this.execShell(containers[0].name, commonShell)
         )}
       >
-        <Icon svg="ssh" interactive={toolbar} title={_i18n._(t`Pod shell`)} />
+        <Icon svg="ssh" interactive={toolbar} title={`Pod shell`} />
         <span className="title">
-          <Trans>Shell</Trans>
+          `Shell`
         </span>
         {containers.length > 1 && (
           <>
@@ -97,10 +95,10 @@ export class PodMenu extends React.Component<Props> {
         <Icon
           material="settings"
           interactive={toolbar}
-          title={_i18n._(t`Pod Debug shell`)}
+          title={`Pod Debug shell`}
         />
         <span className="title">
-          <Trans>Debug Shell</Trans>
+          `Debug Shell`
         </span>
         {containers.length > 1 && (
           <>
@@ -137,11 +135,11 @@ export class PodMenu extends React.Component<Props> {
       <MenuItem onClick={prevDefault(() => this.showLogs(containers[0]))}>
         <Icon
           material="subject"
-          title={_i18n._(t`Logs`)}
+          title={`Logs`}
           interactive={toolbar}
         />
         <span className="title">
-          <Trans>Logs</Trans>
+          `Logs`
         </span>
         {containers.length > 1 && (
           <>

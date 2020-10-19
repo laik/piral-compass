@@ -5,10 +5,10 @@ import {observer} from "mobx-react";
 import {Link} from "react-router-dom";
 import {podsStore} from "./pods.store";
 import {RouteComponentProps} from "react-router";
-import {volumeClaimStore} from "../+storage-volume-claims/volume-claim.store";
+// import {volumeClaimStore} from "../+storage-volume-claims/volume-claim.store";
 import {IPodsRouteParams} from "../+workloads";
 import {eventStore} from "compass-base/client/components/+events/event.store";
-import {KubeObjectListLayout} from "compass-base/client/kube-object";
+import {KubeObjectListLayout} from "compass-base/client/components/kube-object";
 import {Pod, podsApi} from "compass-base/client/api/endpoints";
 import {PodMenu} from "./pod-menu";
 import {stopPropagation} from "compass-base/client/utils";
@@ -57,7 +57,7 @@ export class Pods extends React.Component<Props> {
     return (
       <KubeObjectListLayout
         className="Pods" store={podsStore}
-        dependentStores={[volumeClaimStore, eventStore]}
+        dependentStores={[eventStore]}
         sortingCallbacks={{
           [sortBy.name]: (pod: Pod) => pod.getName(),
           [sortBy.namespace]: (pod: Pod) => pod.getNs(),
