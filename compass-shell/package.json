@@ -1,13 +1,13 @@
 {
   "name": "compass-shell",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "keywords": [
     "piral"
   ],
   "dependencies": {
-    "compass-base": "../compass/compass-base-0.1.1.tgz",
-    "piral": "^0.12.2"
+    "compass-base": "0.1.3",
+    "piral": "0.12.3"
   },
   "scripts": {
     "start": "piral debug",
@@ -15,14 +15,12 @@
   },
   "app": "./src/index.html",
   "pilets": {
-    "files": [
-      "webpack.config.js"
-    ],
+    "files": [],
     "externals": [],
     "scripts": {},
     "validators": {},
     "devDependencies": {
-      "compass-base": "../compass/compass-base-0.1.1.tgz"
+      "compass-base": "0.1.3"
     },
     "preScaffold": "",
     "postScaffold": "",
@@ -35,7 +33,7 @@
     "@types/react-dom": "latest",
     "@types/react-router": "latest",
     "@types/react-router-dom": "latest",
-    "piral-cli": "latest",
+    "piral-cli": "0.12.3",
     "typescript": "^3.9.7"
   }
 }

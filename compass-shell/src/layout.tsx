@@ -40,13 +40,6 @@ export const layout: Partial<ComponentsState> = {
     console.log(children);
     return (
       <>
-        <SidebarNavItem
-          id="events"
-          url={""}
-          routePath={""}
-          icon={<Icon material="access_time"/>}
-          text={`Events`}
-        />
         {children}
       </>
     );
