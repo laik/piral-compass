@@ -49,7 +49,7 @@ export class Sidebar extends React.Component<Props> {
             />
           </div>
           <div className="sidebar-nav flex column box grow-fixed">
-            <Menu type={"header"}/>
+            <Menu type={"general"}/>
           </div>
         </div>
       </SidebarContext.Provider>

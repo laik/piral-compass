@@ -1,10 +1,8 @@
 import * as React from 'react';
-import {ComponentsState, ErrorComponentsState, SwitchErrorInfo, MenuItemProps, Menu, Notifications} from 'piral';
-import {Link, matchPath} from 'react-router-dom';
+import {ComponentsState, ErrorComponentsState, SwitchErrorInfo} from 'piral';
+import {Link} from 'react-router-dom';
 import "compass-base/client/components/layout/main-layout.scss";
 import {Layout} from "./main-layout";
-import {SidebarNavItem} from "./sidebar";
-import {Icon} from "compass-base/client/components/icon";
 
 export const errors: Partial<ErrorComponentsState> = {
   not_found: () => (
@@ -37,7 +35,7 @@ export const layout: Partial<ComponentsState> = {
   DashboardTile: ({columns, rows, children}) => <div className={`tile cols-${columns} rows-${rows}`}>{children}</div>,
   Layout: Layout,
   MenuContainer: ({children}) => {
-    console.log(children);
+    console.log("menu", children);
     return (
       <>
         {children}
