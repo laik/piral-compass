@@ -23,16 +23,6 @@ export const layout: Partial<ComponentsState> = {
       <SwitchErrorInfo {...props} />
     </div>
   ),
-  DashboardContainer: ({children}) => (
-    <div>
-      <h1>Hello, world!</h1>
-      <p>Welcome to your new microfrontend app shell, built with:</p>
-      <div className="tiles">
-        {children}
-      </div>
-    </div>
-  ),
-  DashboardTile: ({columns, rows, children}) => <div className={`tile cols-${columns} rows-${rows}`}>{children}</div>,
   Layout: Layout,
   MenuContainer: ({children}) => {
     console.log("menu", children);
