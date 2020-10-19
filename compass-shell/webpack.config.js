@@ -18,7 +18,7 @@ module.exports = function(compassConfig) {
   const HtmlWebpackPlugin = require('html-webpack-plugin');
 
   const srcDir = path.resolve(process.cwd(), 'node_modules', 'compass-base', 'client');
-  const sassCommonVarsFile = path.resolve(process.cwd(), 'src', 'vars.scss');
+  const sassCommonVarsFile = path.resolve(process.cwd(), 'scss', 'vars.scss');
 
   const CLIENT_DIR = "client";
   const BUILD_DIR = "build";
