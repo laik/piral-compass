@@ -15,7 +15,7 @@ fi
 npm start &
 cd ..
 
-sudo ./publish.sh
-
-cd compass-shell
-piral debug
+#sudo ./publish.sh
+#
+#cd compass-shell
+#piral debug
