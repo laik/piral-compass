@@ -77,7 +77,7 @@ export class Layout extends React.PureComponent<Props, any> {
     }
   }
 
-  loginout = () => {
+  logout = () => {
     configStore.reset()
     kubeWatchApi.reset()
     window.localStorage.removeItem('u_config')
@@ -89,9 +89,10 @@ export class Layout extends React.PureComponent<Props, any> {
     const userConfig = store.get('u_config')
     if(!userConfig){
       Notifications.error('Token Expired');
-      setTimeout(()=>{
-        this.loginout()
-      },1000)
+      this.logout();
+      // setTimeout(()=>{
+      //   this.loginout()
+      // },1000)
       return null
     }
   }
@@ -108,7 +109,7 @@ export class Layout extends React.PureComponent<Props, any> {
             <Icon material="brightness_medium" />
             <span className="title">Theme</span>
           </MenuItem>
-          <MenuItem onClick={this.loginout}>
+          <MenuItem onClick={this.logout}>
             <Icon material="exit_to_app" />
             <span className="title">Logout</span>
           </MenuItem>
@@ -121,6 +122,7 @@ export class Layout extends React.PureComponent<Props, any> {
     const { className, contentClass, headerClass, tabs, footer, footerClass, children } = this.props;
     const { clusterName, lensVersion, kubectlAccess } = configStore.config;
     const { pathname } = navigation.location;
+    window.location.replace('/login');
     this.ifLogin()
     return (
       <div className={cssNames("MainLayout", className, themeStore.activeTheme.type)}>

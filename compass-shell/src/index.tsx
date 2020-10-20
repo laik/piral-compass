@@ -10,7 +10,14 @@ import {LoginComponent} from './+login'
 // change to your feed URL here (either using feed.piral.cloud or your own service)
 themeStore.setTheme('kontena-light');
 
-if (location.pathname !== '/login') {
+
+
+if (location.pathname === '/login') {
+  render(
+    <LoginComponent />,
+    document.querySelector('#app'),
+  );
+}else {
   const piral = renderInstance({
     layout,
     errors,
@@ -23,13 +30,8 @@ if (location.pathname !== '/login') {
     //   .then(res => res.items);
     // }
   });
-} else {
-  console.log(location.pathname)
-  render(
-    <LoginComponent />,
-    document.querySelector('#app'),
-  );
 }
+
 
 
 
