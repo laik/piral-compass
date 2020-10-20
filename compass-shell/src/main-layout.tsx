@@ -122,8 +122,7 @@ export class Layout extends React.PureComponent<Props, any> {
     const { className, contentClass, headerClass, tabs, footer, footerClass, children } = this.props;
     const { clusterName, lensVersion, kubectlAccess } = configStore.config;
     const { pathname } = navigation.location;
-    window.location.replace('/login');
-    this.ifLogin()
+    // this.ifLogin()
     return (
       <div className={cssNames("MainLayout", className, themeStore.activeTheme.type)}>
         <header className={cssNames("flex gaps align-center", headerClass)}>
